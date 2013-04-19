@@ -12,12 +12,6 @@ public abstract class pcplLaunchListener implements ILaunchListener {
 	}
 
 	@Override
-	public void launchAdded(ILaunch launch) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public void launchChanged(ILaunch launch) {
 		// TODO Auto-generated method stub
 

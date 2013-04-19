@@ -1,7 +1,6 @@
 package pcpl.core.eventHandler;
 
 import org.eclipse.debug.core.DebugPlugin;
-import org.eclipse.jdt.junit.JUnitCore;
 
 public class EventCenter {
 	private static EventCenter instance = null;
@@ -15,7 +14,7 @@ public class EventCenter {
 	}
 
 	private EventCenter() {
-		handler = new SimpleEventHandler();
+		handler = new BasicEventHandler();
 		DebugPlugin.getDefault().addDebugEventListener(handler);
 	}
 

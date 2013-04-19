@@ -7,6 +7,7 @@ Bundle-Activator: pcpl.core.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.debug.core,
- org.eclipse.jdt.junit.core
+ org.eclipse.jdt.junit.core,
+ org.eclipse.debug.ui
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7

@@ -1,8 +1,11 @@
 package pcpl.core;
 
+import org.eclipse.debug.core.DebugPlugin;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
+
+import pcpl.core.launch.pcplLauncher;
 
 /**
  * The activator class controls the plug-in life cycle

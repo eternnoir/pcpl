@@ -3,12 +3,18 @@ package pcpl.core.handlers;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.debug.core.DebugPlugin;
+import org.eclipse.debug.core.ILaunchConfiguration;
+import org.eclipse.debug.core.ILaunchConfigurationType;
+import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
+import org.eclipse.debug.core.ILaunchManager;
+import org.eclipse.debug.ui.DebugUITools;
 import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.handlers.HandlerUtil;
-import org.eclipse.jface.dialogs.MessageDialog;
 
 import pcpl.core.eventHandler.BreakPointListener;
 import pcpl.core.eventHandler.EventCenter;
+import pcpl.core.launch.pcplLauncher;
 import pcpl.core.mode.NormalMode;
 
 /**
@@ -35,6 +41,11 @@ public class SampleHandler extends AbstractHandler {
 				"Hello, Eclipse world");*/
 		BreakPointListener b = new NormalMode();
 		EventCenter.getInstance().addBreakPointListener(b);
+
+
+		
 		return null;
 	}
+	
+
 }
