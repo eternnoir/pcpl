@@ -42,8 +42,6 @@ public class SampleHandler extends AbstractHandler {
 		BreakPointListener b = new NormalMode();
 		EventCenter.getInstance().addBreakPointListener(b);
 
-
-		
 		return null;
 	}
 	
