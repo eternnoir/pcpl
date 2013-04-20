@@ -28,8 +28,9 @@ public class NormalMode extends AbstractMode {
 
 	}
 	
-	public void onTargetTerminated() {
-		int i = 0;
+	public breakpointRecoder getBreakPointRecorder(){
+		assert(_bpr != null);
+		return _bpr;
 	}
-
+	
 }

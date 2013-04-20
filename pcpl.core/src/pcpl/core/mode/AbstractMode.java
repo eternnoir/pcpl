@@ -8,6 +8,7 @@ import org.eclipse.debug.core.model.IVariable;
 import pcpl.core.eventHandler.BreakPointListener;
 import pcpl.core.eventHandler.TargetCreationListener;
 import pcpl.core.eventHandler.TargetTerminationListener;
+import pcpl.croe.breakpoint.breakpointRecoder;
 
 public abstract class AbstractMode implements BreakPointListener,
 		TargetCreationListener, TargetTerminationListener {
@@ -36,6 +37,10 @@ public abstract class AbstractMode implements BreakPointListener,
 	
 	public int getMode(){
 		return _modeType;
+	}
+	
+	public breakpointRecoder getBreakPointRecorder(){
+		return null;
 	}
 
 }
