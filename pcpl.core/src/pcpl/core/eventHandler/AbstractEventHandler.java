@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.debug.core.DebugEvent;
 import org.eclipse.debug.core.IDebugEventSetListener;
 import org.eclipse.debug.core.model.IDebugElement;
@@ -83,7 +84,7 @@ public abstract class AbstractEventHandler implements IDebugEventSetListener {
 
 
 
-	protected abstract boolean handleBreakpointEvent(IDebugElement dElement);
+	protected abstract boolean handleBreakpointEvent(IDebugElement dElement) ;
 
 	protected abstract boolean handleTargetCreatedEvent(IDebugElement dElement);
 

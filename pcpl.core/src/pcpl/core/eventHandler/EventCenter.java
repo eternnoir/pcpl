@@ -2,9 +2,12 @@ package pcpl.core.eventHandler;
 
 import org.eclipse.debug.core.DebugPlugin;
 
+import pcpl.core.mode.AbstractMode;
+
 public class EventCenter {
 	private static EventCenter instance = null;
 	private AbstractEventHandler handler;
+	private AbstractMode  _currentMode;
 
 	public static EventCenter getInstance() {
 		if (instance == null) {
@@ -41,6 +44,15 @@ public class EventCenter {
 	public void removeTargetTerminationListener(
 			TargetTerminationListener listener) {
 		handler.removeTargetTerminationListener(listener);
+	}
+	
+	public void setMode(AbstractMode m){
+		_currentMode = m;
+	}
+	
+	public AbstractMode getMode(){
+		assert (_currentMode != null);
+		return _currentMode;
 	}
 
 

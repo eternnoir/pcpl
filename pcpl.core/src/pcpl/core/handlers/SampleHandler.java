@@ -15,7 +15,9 @@ import org.eclipse.ui.IWorkbenchWindow;
 import pcpl.core.eventHandler.BreakPointListener;
 import pcpl.core.eventHandler.EventCenter;
 import pcpl.core.launch.pcplLauncher;
+import pcpl.core.mode.AbstractMode;
 import pcpl.core.mode.NormalMode;
+import pcpl.core.mode.RecordMode;
 
 /**
  * Our sample handler extends AbstractHandler, an IHandler base class.
@@ -39,8 +41,17 @@ public class SampleHandler extends AbstractHandler {
 				window.getShell(),
 				"Core",
 				"Hello, Eclipse world");*/
-		BreakPointListener b = new NormalMode();
-		EventCenter.getInstance().addBreakPointListener(b);
+		if(EventCenter.getInstance().getMode().getMode() == 1){		//normal mode
+			AbstractMode re = new RecordMode();
+			EventCenter.getInstance().addBreakPointListener(re);
+			EventCenter.getInstance().setMode(re);
+		}
+		else if(EventCenter.getInstance().getMode().getMode() == 2){//record mode
+		
+		}
+		else{	//something not good happend
+			System.err.print("mode error");
+		}
 
 		return null;
 	}
