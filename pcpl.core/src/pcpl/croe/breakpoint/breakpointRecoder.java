@@ -12,6 +12,7 @@ public class breakpointRecoder {
 	}
 	
 	public void addBreakPointMarker(IMarker im){
+		System.out.print(im.getResource().getFullPath().toString());
 		_bpsm.add(im);
 	}
 }

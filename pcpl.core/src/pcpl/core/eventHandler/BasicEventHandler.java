@@ -1,5 +1,7 @@
 package pcpl.core.eventHandler;
 
+import java.util.ConcurrentModificationException;
+
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.debug.core.DebugException;
 import org.eclipse.debug.core.model.IBreakpoint;
@@ -8,6 +10,8 @@ import org.eclipse.debug.core.model.IDebugTarget;
 import org.eclipse.debug.core.model.IStackFrame;
 import org.eclipse.debug.core.model.IThread;
 import org.eclipse.debug.core.model.IVariable;
+
+
 
 
 
@@ -45,15 +49,25 @@ public class BasicEventHandler extends AbstractEventHandler {
 	}
 
 	@Override
-	protected boolean handleTargetCreatedEvent(IDebugElement dElement) {
-		// TODO Auto-generated method stub
-		return false;
+	protected boolean handleTargetTerminateEvent(IDebugElement dElement) {
+		boolean ok = false;
+		try {
+			for (TargetTerminationListener listener : this.terminationListeners) {
+				listener.onTargetTerminated();
+			}
+			ok = true;
+		} catch (ConcurrentModificationException e) {
+			return handleTargetTerminateEvent(dElement);
+		} // see http://www.javaperformancetuning.com/articles/fastfail2.shtml
+		return ok;
 	}
 
 	@Override
-	protected boolean handleTargetTerminateEvent(IDebugElement dElement) {
-		// TODO Auto-generated method stub
-		return false;
+	protected boolean handleTargetCreatedEvent(IDebugElement dElement) {
+		for (TargetCreationListener l : this.creationListeners) {
+			l.onTargetCreated(dElement.getDebugTarget());
+		}
+		return true;
 	}
 
 }

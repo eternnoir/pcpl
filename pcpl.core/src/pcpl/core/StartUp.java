@@ -18,6 +18,7 @@ public class StartUp implements IStartup {
 		AbstractMode b = new NormalMode();
 		EventCenter.getInstance().addBreakPointListener(b);
 		EventCenter.getInstance().setMode(b);
+		EventCenter.getInstance().addTargetTerminationListener(b);
 
 	}
 
