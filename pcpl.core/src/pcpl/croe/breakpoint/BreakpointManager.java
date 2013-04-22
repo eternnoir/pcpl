@@ -3,6 +3,8 @@ package pcpl.croe.breakpoint;
 import java.util.ArrayList;
 
 import org.eclipse.core.resources.IMarker;
+import org.eclipse.debug.core.model.ILineBreakpoint;
+import org.eclipse.debug.core.model.LineBreakpoint;
 
 
 
@@ -21,17 +23,14 @@ public class BreakpointManager {
 		
 	}
 	
-	public ArrayList<IMarker> diffResult(ArrayList<IMarker> nor,ArrayList<IMarker> rec){
-		ArrayList<IMarker> _ret = new ArrayList<IMarker>();
-		for(IMarker nm : nor){
-			for(IMarker re : rec){
-				if(nm.equals(re)){
-					_ret.add(re);
-				}
+	public ArrayList<ILineBreakpoint> diffResult(ArrayList<ILineBreakpoint> nor,ArrayList<ILineBreakpoint> rec){
+		ArrayList<ILineBreakpoint> _ret = new ArrayList<ILineBreakpoint>();
+		int i;
+		for(ILineBreakpoint nm : nor){
+			while(rec.indexOf(nm)!= -1){
+				rec.remove(nm);
 			}
-		}
-		for(IMarker sel : _ret){
-			rec.remove(sel);
+
 		}
 		return rec;
 	}
