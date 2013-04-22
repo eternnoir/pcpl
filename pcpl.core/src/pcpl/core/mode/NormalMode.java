@@ -1,6 +1,7 @@
 package pcpl.core.mode;
 
 
+import org.eclipse.core.resources.IMarker;
 import org.eclipse.debug.core.DebugException;
 import org.eclipse.debug.core.DebugPlugin;
 import org.eclipse.debug.core.model.IBreakpoint;
@@ -8,6 +9,7 @@ import org.eclipse.debug.core.model.IDebugTarget;
 import org.eclipse.debug.core.model.ILineBreakpoint;
 import org.eclipse.debug.core.model.IVariable;
 
+import pcpl.core.eventHandler.EventCenter;
 import pcpl.croe.breakpoint.breakpointRecoder;
 
 public class NormalMode extends AbstractMode {
@@ -21,9 +23,13 @@ public class NormalMode extends AbstractMode {
 	public void onBreakPointTriggered(IVariable[] variables,
 			IBreakpoint breakpoint) {
 		_debugTargets = DebugPlugin.getDefault().getLaunchManager().getDebugTargets();
+		if(EventCenter.getInstance().getModeType() == 2)
+			return;
 		ILineBreakpoint lineBreakpoint = (ILineBreakpoint) breakpoint;
 		try{
-			_bpr.addBreakPointMarker(lineBreakpoint.getMarker());
+			IMarker m =lineBreakpoint.getMarker();
+			if(m!=null)
+			//	_bpr.addBreakPointMarker(m);
 			this.cont();
 		}
 		catch(Exception ex){

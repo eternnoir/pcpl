@@ -8,6 +8,7 @@ import pcpl.core.eventHandler.EventCenter;
 import pcpl.core.launch.pcplLauncher;
 import pcpl.core.mode.AbstractMode;
 import pcpl.core.mode.NormalMode;
+import pcpl.core.mode.RecordMode;
 
 public class StartUp implements IStartup {
 
@@ -16,9 +17,10 @@ public class StartUp implements IStartup {
 		DebugPlugin.getDefault().getLaunchManager()
 		.addLaunchListener(pcplLauncher.getInstance());
 		AbstractMode b = new NormalMode();
-		EventCenter.getInstance().addBreakPointListener(b);
-		EventCenter.getInstance().setMode(b);
-		EventCenter.getInstance().addTargetTerminationListener(b);
+		EventCenter.getInstance().setModeType(1);
+		EventCenter.getInstance().setNorMode(b);
+		AbstractMode re = new RecordMode();
+		EventCenter.getInstance().setRecMode(re);
 
 	}
 

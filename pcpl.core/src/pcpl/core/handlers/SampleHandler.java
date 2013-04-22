@@ -41,13 +41,12 @@ public class SampleHandler extends AbstractHandler {
 				window.getShell(),
 				"Core",
 				"Hello, Eclipse world");*/
-		if(EventCenter.getInstance().getMode().getMode() == 1){		//normal mode
-			AbstractMode re = new RecordMode();
-			EventCenter.getInstance().addBreakPointListener(re);
-			EventCenter.getInstance().setMode(re);
+		if(EventCenter.getInstance().getModeType() == 1){		//normal mode
+			EventCenter.getInstance().setModeType(2);
 		}
-		else if(EventCenter.getInstance().getMode().getMode() == 2){//record mode
-		
+		else if(EventCenter.getInstance().getModeType() == 2){//record mode
+			//EventCenter.getInstance().removeBreakPointListener(EventCenter.getInstance().getRecMode());
+			//EventCenter.getInstance().setMode(EventCenter.getInstance().getNorMode());
 		}
 		else{	//something not good happend
 			System.err.print("mode error");

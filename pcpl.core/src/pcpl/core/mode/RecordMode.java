@@ -16,23 +16,30 @@ import pcpl.croe.breakpoint.breakpointRecoder;
 
 public class RecordMode extends AbstractMode {
 	private breakpointRecoder _bpr;	
+	private breakpointRecoder _bprr;	
 	private IDebugTarget[] _debugTargets = null;
 	
 	public RecordMode(){
 		_bpr = new breakpointRecoder();
+		_bprr = new breakpointRecoder();
 		_modeType = 2;
 	}
 	
 	public void onBreakPointTriggered(IVariable[] variables,IBreakpoint breakpoint) {
 		ILineBreakpoint lineBreakpoint = (ILineBreakpoint) breakpoint;
+		int mode = EventCenter.getInstance().getModeType();
 		_debugTargets = DebugPlugin.getDefault().getLaunchManager().getDebugTargets();
 		try{
-			_bpr.addBreakPointMarker(lineBreakpoint.getMarker());
-			System.out.print(lineBreakpoint.getLineNumber());
+			IMarker m =lineBreakpoint.getMarker();
+			if(m!=null){
+				_bpr.addBreakPointMarker(lineBreakpoint,mode);
+			}
+			//System.out.print(lineBreakpoint.getLineNumber());
 			this.cont();
 		}
 		catch(Exception ex){
 			System.err.print("get breakpoint info error");
+			this.cont();
 		}	
 
 	}
@@ -55,9 +62,8 @@ public class RecordMode extends AbstractMode {
 	}
 	
 	public void onTargetTerminated() {
-		ArrayList<IMarker> _ret;		
-		_ret = BreakpointManager.getInstance().diffResult(EventCenter.getInstance().getNorMode().getBreakPointRecorder().getResult()
-				, EventCenter.getInstance().getRecMode().getBreakPointRecorder().getResult());
+		ArrayList<ILineBreakpoint> _ret;		
+		_ret = BreakpointManager.getInstance().diffResult(_bpr.getResultN(),_bpr.getResultR());
 	
 	}
 	

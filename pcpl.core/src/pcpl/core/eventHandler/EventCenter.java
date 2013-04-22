@@ -7,7 +7,7 @@ import pcpl.core.mode.AbstractMode;
 public class EventCenter {
 	private static EventCenter instance = null;
 	private AbstractEventHandler handler;
-	private AbstractMode  _currentMode;
+	private int  _currentModeType;
 	private AbstractMode  _normalMode;
 	private AbstractMode  _recordMode;
 
@@ -21,7 +21,7 @@ public class EventCenter {
 	private EventCenter() {
 		handler = new BasicEventHandler();
 		DebugPlugin.getDefault().addDebugEventListener(handler);
-		_currentMode = null;
+		_currentModeType = 0;
 		_normalMode = null;
 		_recordMode = null;
 	}
@@ -51,18 +51,18 @@ public class EventCenter {
 		handler.removeTargetTerminationListener(listener);
 	}
 	
-	public void setMode(AbstractMode m){
-		_currentMode = m;
+	public void setModeType(int m){
+		_currentModeType = m;
 	}
 	
-	public AbstractMode getMode(){
-		assert (_currentMode != null);
-		return _currentMode;
+	public int getModeType(){
+		
+		return _currentModeType;
 	}
 	public void setNorMode(AbstractMode m){
 		_normalMode = m;
-		this.addBreakPointListener(m);
-		this.addTargetTerminationListener(m);
+		//this.addBreakPointListener(m);
+		//this.addTargetTerminationListener(m);
 	}
 	public void setRecMode(AbstractMode m){
 		_recordMode = m;
