@@ -8,6 +8,8 @@ public class EventCenter {
 	private static EventCenter instance = null;
 	private AbstractEventHandler handler;
 	private AbstractMode  _currentMode;
+	private AbstractMode  _normalMode;
+	private AbstractMode  _recordMode;
 
 	public static EventCenter getInstance() {
 		if (instance == null) {
@@ -19,6 +21,9 @@ public class EventCenter {
 	private EventCenter() {
 		handler = new BasicEventHandler();
 		DebugPlugin.getDefault().addDebugEventListener(handler);
+		_currentMode = null;
+		_normalMode = null;
+		_recordMode = null;
 	}
 
 	public void addBreakPointListener(BreakPointListener listener) {
@@ -53,6 +58,25 @@ public class EventCenter {
 	public AbstractMode getMode(){
 		assert (_currentMode != null);
 		return _currentMode;
+	}
+	public void setNorMode(AbstractMode m){
+		_normalMode = m;
+		this.addBreakPointListener(m);
+		this.addTargetTerminationListener(m);
+	}
+	public void setRecMode(AbstractMode m){
+		_recordMode = m;
+		this.addBreakPointListener(m);
+		this.addTargetTerminationListener(m);
+	}
+
+	
+	
+	public AbstractMode getNorMode(){
+		return _normalMode;
+	}
+	public AbstractMode getRecMode(){
+		return _recordMode;
 	}
 
 

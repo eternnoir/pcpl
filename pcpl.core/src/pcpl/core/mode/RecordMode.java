@@ -1,5 +1,8 @@
 package pcpl.core.mode;
 
+import java.util.ArrayList;
+
+import org.eclipse.core.resources.IMarker;
 import org.eclipse.debug.core.DebugException;
 import org.eclipse.debug.core.DebugPlugin;
 import org.eclipse.debug.core.model.IBreakpoint;
@@ -7,6 +10,8 @@ import org.eclipse.debug.core.model.IDebugTarget;
 import org.eclipse.debug.core.model.ILineBreakpoint;
 import org.eclipse.debug.core.model.IVariable;
 
+import pcpl.core.eventHandler.EventCenter;
+import pcpl.croe.breakpoint.BreakpointManager;
 import pcpl.croe.breakpoint.breakpointRecoder;
 
 public class RecordMode extends AbstractMode {
@@ -46,6 +51,13 @@ public class RecordMode extends AbstractMode {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	public void onTargetTerminated() {
+		ArrayList<IMarker> _ret;		
+		_ret = BreakpointManager.getInstance().diffResult(EventCenter.getInstance().getNorMode().getBreakPointRecorder().getResult()
+				, EventCenter.getInstance().getRecMode().getBreakPointRecorder().getResult());
+	
 	}
 	
 }
