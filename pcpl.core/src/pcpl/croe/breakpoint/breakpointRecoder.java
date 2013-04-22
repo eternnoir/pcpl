@@ -15,4 +15,8 @@ public class breakpointRecoder {
 		System.out.print(im.getResource().getFullPath().toString());
 		_bpsm.add(im);
 	}
+	
+	public ArrayList<IMarker> getResult(){
+		return	_bpsm;
+	}
 }
