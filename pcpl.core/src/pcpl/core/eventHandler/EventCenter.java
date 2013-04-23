@@ -69,7 +69,11 @@ public class EventCenter {
 		this.addBreakPointListener(m);
 		this.addTargetTerminationListener(m);
 	}
-
+	public void setTraMode(AbstractMode m){
+		_recordMode = m;
+		this.addBreakPointListener(m);
+		this.addTargetTerminationListener(m);
+	}
 	
 	
 	public AbstractMode getNorMode(){
