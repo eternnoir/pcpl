@@ -53,7 +53,7 @@ public class SampleHandler extends AbstractHandler {
 			EventCenter.getInstance().setTraMode(t);
 			System.out.print("change Mode Type 3\n");
 		}
-		if(EventCenter.getInstance().getModeType() == 3){		//normal mode
+		else if(EventCenter.getInstance().getModeType() == 3){		//normal mode
 			EventCenter.getInstance().setModeType(1);
 			System.out.print("change Mode Type 1\n");
 		}
