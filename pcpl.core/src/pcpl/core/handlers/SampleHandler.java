@@ -18,6 +18,7 @@ import pcpl.core.launch.pcplLauncher;
 import pcpl.core.mode.AbstractMode;
 import pcpl.core.mode.NormalMode;
 import pcpl.core.mode.RecordMode;
+import pcpl.core.mode.TraceMode;
 
 /**
  * Our sample handler extends AbstractHandler, an IHandler base class.
@@ -43,10 +44,18 @@ public class SampleHandler extends AbstractHandler {
 				"Hello, Eclipse world");*/
 		if(EventCenter.getInstance().getModeType() == 1){		//normal mode
 			EventCenter.getInstance().setModeType(2);
+			System.out.print("change Mode Type 2\n");
 		}
 		else if(EventCenter.getInstance().getModeType() == 2){//record mode
-			//EventCenter.getInstance().removeBreakPointListener(EventCenter.getInstance().getRecMode());
+			EventCenter.getInstance().removeBreakPointListener(EventCenter.getInstance().getRecMode());
 			//EventCenter.getInstance().setMode(EventCenter.getInstance().getNorMode());
+			TraceMode t = new TraceMode();
+			EventCenter.getInstance().setTraMode(t);
+			System.out.print("change Mode Type 3\n");
+		}
+		if(EventCenter.getInstance().getModeType() == 3){		//normal mode
+			EventCenter.getInstance().setModeType(1);
+			System.out.print("change Mode Type 1\n");
 		}
 		else{	//something not good happend
 			System.err.print("mode error");
