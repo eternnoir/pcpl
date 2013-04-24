@@ -27,11 +27,10 @@ public class pcplLauncher extends pcplLaunchListener {
 		try {
 			String launchMode = launch.getLaunchMode();
 			if (launchMode.equals(LaunchManager.DEBUG_MODE)) {
-					int i = 0;
+					//int i = 0;
 				} else {
 					System.err.println("Not in Debug Mode");
 				}
-
 		} catch (Exception e) {
 			e.printStackTrace(System.err);
 		}

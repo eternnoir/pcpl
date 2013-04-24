@@ -3,21 +3,7 @@ package pcpl.core.handlers;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.debug.core.DebugPlugin;
-import org.eclipse.debug.core.ILaunchConfiguration;
-import org.eclipse.debug.core.ILaunchConfigurationType;
-import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
-import org.eclipse.debug.core.ILaunchManager;
-import org.eclipse.debug.ui.DebugUITools;
-import org.eclipse.ui.IWorkbenchWindow;
-
-import pcpl.core.eventHandler.BreakPointListener;
 import pcpl.core.eventHandler.EventCenter;
-import pcpl.core.launch.pcplLauncher;
-import pcpl.core.mode.AbstractMode;
-import pcpl.core.mode.NormalMode;
-import pcpl.core.mode.RecordMode;
 import pcpl.core.mode.TraceMode;
 
 /**
@@ -51,13 +37,14 @@ public class SampleHandler extends AbstractHandler {
 			//EventCenter.getInstance().setMode(EventCenter.getInstance().getNorMode());
 			TraceMode t = new TraceMode();
 			EventCenter.getInstance().setTraMode(t);
+			EventCenter.getInstance().setModeType(3);
 			System.out.print("change Mode Type 3\n");
 		}
 		else if(EventCenter.getInstance().getModeType() == 3){		//normal mode
 			EventCenter.getInstance().setModeType(1);
 			System.out.print("change Mode Type 1\n");
 		}
-		else{	//something not good happend
+		else{	
 			System.err.print("mode error");
 		}
 

@@ -1,6 +1,5 @@
 package pcpl.core.eventHandler;
 
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.debug.core.model.IBreakpoint;
 import org.eclipse.debug.core.model.IVariable;
 

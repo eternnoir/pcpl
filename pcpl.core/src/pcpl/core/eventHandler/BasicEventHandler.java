@@ -1,8 +1,6 @@
 package pcpl.core.eventHandler;
 
 import java.util.ConcurrentModificationException;
-
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.debug.core.DebugException;
 import org.eclipse.debug.core.model.IBreakpoint;
 import org.eclipse.debug.core.model.IDebugElement;

@@ -1,10 +1,7 @@
 package pcpl.croe.breakpoint;
 
 import java.util.ArrayList;
-
-import org.eclipse.core.resources.IMarker;
 import org.eclipse.debug.core.model.ILineBreakpoint;
-import org.eclipse.debug.core.model.LineBreakpoint;
 
 public class breakpointRecoder {
 	private ArrayList<ILineBreakpoint> _bpsmN;

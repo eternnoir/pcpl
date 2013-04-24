@@ -1,14 +1,11 @@
 package pcpl.core.mode;
 
-import org.eclipse.core.resources.IMarker;
 import org.eclipse.debug.core.DebugPlugin;
 import org.eclipse.debug.core.model.IBreakpoint;
 import org.eclipse.debug.core.model.IDebugTarget;
-import org.eclipse.debug.core.model.ILineBreakpoint;
 import org.eclipse.debug.core.model.IVariable;
 
 import pcpl.core.eventHandler.BreakPointListener;
-import pcpl.core.eventHandler.EventCenter;
 import pcpl.core.eventHandler.TargetCreationListener;
 import pcpl.core.eventHandler.TargetTerminationListener;
 import pcpl.croe.breakpoint.BreakpointManager;

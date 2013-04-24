@@ -3,8 +3,6 @@ package pcpl.core.eventHandler;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.debug.core.DebugEvent;
 import org.eclipse.debug.core.IDebugEventSetListener;
 import org.eclipse.debug.core.model.IDebugElement;
