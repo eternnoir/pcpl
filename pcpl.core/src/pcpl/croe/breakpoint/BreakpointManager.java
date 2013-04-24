@@ -2,13 +2,10 @@ package pcpl.croe.breakpoint;
 
 import java.util.ArrayList;
 
-import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.debug.core.DebugPlugin;
-import org.eclipse.debug.core.model.Breakpoint;
 import org.eclipse.debug.core.model.IBreakpoint;
 import org.eclipse.debug.core.model.ILineBreakpoint;
-import org.eclipse.debug.core.model.LineBreakpoint;
 
 public class BreakpointManager {
 	private static BreakpointManager instance = null;

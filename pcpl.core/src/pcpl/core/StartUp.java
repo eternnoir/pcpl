@@ -3,7 +3,6 @@ package pcpl.core;
 import org.eclipse.debug.core.DebugPlugin;
 import org.eclipse.ui.IStartup;
 
-import pcpl.core.eventHandler.BreakPointListener;
 import pcpl.core.eventHandler.EventCenter;
 import pcpl.core.launch.pcplLauncher;
 import pcpl.core.mode.AbstractMode;

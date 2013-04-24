@@ -3,7 +3,6 @@ package pcpl.core.launch;
 import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.internal.core.LaunchManager;
 
-import pcpl.core.eventHandler.*;
 
 
 
@@ -19,9 +18,7 @@ public class pcplLauncher extends pcplLaunchListener {
 		return instance;
 	}
 	
-	private EventCenter eventCenter;
 	private pcplLauncher(){
-		eventCenter = EventCenter.getInstance();
 	}
 	public void launchAdded(ILaunch launch) {
 		try {
