@@ -5,6 +5,7 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import pcpl.core.eventHandler.EventCenter;
 import pcpl.core.mode.TraceMode;
+import pcpl.croe.breakpoint.FileParaviserUtils;
 
 /**
  * Our sample handler extends AbstractHandler, an IHandler base class.
@@ -28,6 +29,7 @@ public class SampleHandler extends AbstractHandler {
 				window.getShell(),
 				"Core",
 				"Hello, Eclipse world");*/
+		FileParaviserUtils.getAllFile("java");
 		if(EventCenter.getInstance().getModeType() == 1){		//normal mode
 			EventCenter.getInstance().setModeType(2);
 			System.out.print("change Mode Type 2\n");
