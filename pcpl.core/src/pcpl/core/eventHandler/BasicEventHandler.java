@@ -1,6 +1,8 @@
 package pcpl.core.eventHandler;
 
 import java.util.ConcurrentModificationException;
+
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.debug.core.DebugException;
 import org.eclipse.debug.core.model.IBreakpoint;
 import org.eclipse.debug.core.model.IDebugElement;
@@ -8,6 +10,7 @@ import org.eclipse.debug.core.model.IDebugTarget;
 import org.eclipse.debug.core.model.IStackFrame;
 import org.eclipse.debug.core.model.IThread;
 import org.eclipse.debug.core.model.IVariable;
+import org.eclipse.jdt.internal.debug.core.breakpoints.JavaLineBreakpoint;
 
 
 
@@ -28,6 +31,14 @@ public class BasicEventHandler extends AbstractEventHandler {
 				for (IThread thread : threads) {
 					if (thread.hasStackFrames()) {
 						IBreakpoint[] bps = thread.getBreakpoints();
+						JavaLineBreakpoint b = (JavaLineBreakpoint) bps[0];
+						try {
+							String s = b.getTypeName();
+							s=s;
+						} catch (CoreException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 						IStackFrame stack = thread.getTopStackFrame();
 						IVariable[] variables = stack.getVariables();
 						for (BreakPointListener listener : this.bpListeners) {

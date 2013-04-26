@@ -9,8 +9,8 @@ import org.eclipse.debug.core.model.IDebugTarget;
 import org.eclipse.debug.core.model.ILineBreakpoint;
 import org.eclipse.debug.core.model.IVariable;
 
+import pcpl.core.breakpoint.breakpointRecoder;
 import pcpl.core.eventHandler.EventCenter;
-import pcpl.croe.breakpoint.breakpointRecoder;
 
 public class NormalMode extends AbstractMode {
 	

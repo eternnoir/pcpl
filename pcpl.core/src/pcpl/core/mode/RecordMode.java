@@ -8,9 +8,9 @@ import org.eclipse.debug.core.model.IDebugTarget;
 import org.eclipse.debug.core.model.ILineBreakpoint;
 import org.eclipse.debug.core.model.IVariable;
 
+import pcpl.core.breakpoint.BreakpointManager;
+import pcpl.core.breakpoint.breakpointRecoder;
 import pcpl.core.eventHandler.EventCenter;
-import pcpl.croe.breakpoint.BreakpointManager;
-import pcpl.croe.breakpoint.breakpointRecoder;
 
 public class RecordMode extends AbstractMode {
 	private breakpointRecoder _bpr;	
@@ -31,7 +31,7 @@ public class RecordMode extends AbstractMode {
 				_bpr.addBreakPointMarker(lineBreakpoint,mode);
 			}
 			//System.out.print(lineBreakpoint.getLineNumber());
-			this.cont();
+			//this.cont();
 		}
 		catch(Exception ex){
 			System.err.print("get breakpoint info error");

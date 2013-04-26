@@ -59,6 +59,18 @@
             </command>
          </toolbar>
       </menuContribution>
-   </extension>
-  
+	   </extension>  
+	   
+	   
+
+ <extension point="org.eclipse.debug.core.breakpoints">
+   <breakpoint 
+      id="pcpl.core.breakpoint.pcplBreakpoint"
+      class="pcpl.core.breakpoint.pcplBreakpoint"
+      markerType="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+   </breakpoint>
+ </extension>
+ 
+ 
+	   
 </plugin>

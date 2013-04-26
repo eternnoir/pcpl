@@ -13,6 +13,7 @@ public class StartUp implements IStartup {
 
 	@Override
 	public void earlyStartup() {
+		
 		DebugPlugin.getDefault().getLaunchManager()
 		.addLaunchListener(pcplLauncher.getInstance());
 		AbstractMode b = new NormalMode();
@@ -20,6 +21,7 @@ public class StartUp implements IStartup {
 		EventCenter.getInstance().setNorMode(b);
 		AbstractMode re = new RecordMode();
 		EventCenter.getInstance().setRecMode(re);
+		
 
 	}
 
