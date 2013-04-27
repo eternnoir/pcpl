@@ -17,7 +17,7 @@ public class StartUp implements IStartup {
 		DebugPlugin.getDefault().getLaunchManager()
 		.addLaunchListener(pcplLauncher.getInstance());
 		AbstractMode b = new NormalMode();
-		EventCenter.getInstance().setModeType(1);
+		EventCenter.getInstance().setModeType(0);
 		EventCenter.getInstance().setNorMode(b);
 		AbstractMode re = new RecordMode();
 		EventCenter.getInstance().setRecMode(re);

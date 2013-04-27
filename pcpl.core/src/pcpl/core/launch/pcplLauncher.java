@@ -26,8 +26,7 @@ public class pcplLauncher extends pcplLaunchListener {
 		try {
 			String launchMode = launch.getLaunchMode();
 			if (launchMode.equals(LaunchManager.DEBUG_MODE)) {
-				BreakpointManager.getInstance().removeAllBreakpoint();
-				BreakpointManager.getInstance().setAllBreakpoint();
+
 				} else {
 					System.err.println("Not in Debug Mode");
 				}

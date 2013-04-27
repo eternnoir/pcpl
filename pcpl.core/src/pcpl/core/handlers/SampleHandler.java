@@ -38,7 +38,15 @@ public class SampleHandler extends AbstractHandler {
 				window.getShell(),
 				"Core",
 				"Hello, Eclipse world");*/
-		if(EventCenter.getInstance().getModeType() == 1){		//normal mode
+		
+		if(EventCenter.getInstance().getModeType() == 0){		//normal mode
+			BreakpointManager.getInstance().removeAllBreakpoint();
+			BreakpointManager.getInstance().setAllBreakpoint();
+			EventCenter.getInstance().setModeType(1);
+			System.out.print("BreakPoint Setup \n");
+			System.out.print("change Mode Type 1\n");
+		}
+		else if(EventCenter.getInstance().getModeType() == 1){		//normal mode
 			EventCenter.getInstance().setModeType(2);
 			System.out.print("change Mode Type 2\n");
 		}
