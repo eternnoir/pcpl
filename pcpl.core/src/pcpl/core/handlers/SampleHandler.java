@@ -10,6 +10,7 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.debug.core.model.LineBreakpoint;
 import org.eclipse.jdt.internal.debug.core.breakpoints.JavaLineBreakpoint;
 
+import pcpl.core.breakpoint.BreakpointManager;
 import pcpl.core.breakpoint.BreakpointSetter;
 import pcpl.core.breakpoint.FileParaviserUtils;
 import pcpl.core.eventHandler.EventCenter;
@@ -37,11 +38,6 @@ public class SampleHandler extends AbstractHandler {
 				window.getShell(),
 				"Core",
 				"Hello, Eclipse world");*/
-		//ArrayList<IFile> f = FileParaviserUtils.getAllFile("java");
-		ArrayList<IResource> r =  FileParaviserUtils.getAllFilesInProject("java");
-		
-		BreakpointSetter.getInstance().setBreakpoint(r.get(0), 3);
-		/*
 		if(EventCenter.getInstance().getModeType() == 1){		//normal mode
 			EventCenter.getInstance().setModeType(2);
 			System.out.print("change Mode Type 2\n");
@@ -60,7 +56,7 @@ public class SampleHandler extends AbstractHandler {
 		}
 		else{	
 			System.err.print("mode error");
-		}*/
+		}
 
 		return null;
 	}

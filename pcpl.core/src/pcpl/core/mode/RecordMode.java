@@ -31,7 +31,7 @@ public class RecordMode extends AbstractMode {
 				_bpr.addBreakPointMarker(lineBreakpoint,mode);
 			}
 			//System.out.print(lineBreakpoint.getLineNumber());
-			//this.cont();
+			this.cont();
 		}
 		catch(Exception ex){
 			System.err.print("get breakpoint info error");
@@ -59,7 +59,6 @@ public class RecordMode extends AbstractMode {
 	
 	public void onTargetTerminated() {		
 		BreakpointManager.getInstance().diffResult(_bpr.getResultN(),_bpr.getResultR());
-	
 	}
 	
 	

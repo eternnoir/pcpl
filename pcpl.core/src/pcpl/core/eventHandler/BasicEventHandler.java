@@ -32,6 +32,7 @@ public class BasicEventHandler extends AbstractEventHandler {
 					if (thread.hasStackFrames()) {
 						IBreakpoint[] bps = thread.getBreakpoints();
 						JavaLineBreakpoint b = (JavaLineBreakpoint) bps[0];
+						//for testing
 						try {
 							String s = b.getTypeName();
 							s=s;
@@ -39,6 +40,7 @@ public class BasicEventHandler extends AbstractEventHandler {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
+						////
 						IStackFrame stack = thread.getTopStackFrame();
 						IVariable[] variables = stack.getVariables();
 						for (BreakPointListener listener : this.bpListeners) {

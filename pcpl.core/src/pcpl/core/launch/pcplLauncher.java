@@ -3,6 +3,8 @@ package pcpl.core.launch;
 import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.internal.core.LaunchManager;
 
+import pcpl.core.breakpoint.BreakpointManager;
+
 
 
 
@@ -24,7 +26,8 @@ public class pcplLauncher extends pcplLaunchListener {
 		try {
 			String launchMode = launch.getLaunchMode();
 			if (launchMode.equals(LaunchManager.DEBUG_MODE)) {
-					//int i = 0;
+				BreakpointManager.getInstance().removeAllBreakpoint();
+				BreakpointManager.getInstance().setAllBreakpoint();
 				} else {
 					System.err.println("Not in Debug Mode");
 				}

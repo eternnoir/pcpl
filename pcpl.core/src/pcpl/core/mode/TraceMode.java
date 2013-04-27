@@ -15,7 +15,7 @@ public class TraceMode extends AbstractMode implements BreakPointListener,
 	private IDebugTarget[] _debugTargets = null;
 	public TraceMode(){
 		_modeType = 3;
-		BreakpointManager.getInstance().removeAllBreakpoint();
+		BreakpointManager.getInstance().disableAllBreakpoint();
 		BreakpointManager.getInstance().setResult();
 	}
 	
