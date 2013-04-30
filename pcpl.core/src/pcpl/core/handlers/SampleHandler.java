@@ -1,18 +1,10 @@
 package pcpl.core.handlers;
 
-import java.util.ArrayList;
-
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IResource;
-import org.eclipse.debug.core.model.LineBreakpoint;
-import org.eclipse.jdt.internal.debug.core.breakpoints.JavaLineBreakpoint;
 
 import pcpl.core.breakpoint.BreakpointManager;
-import pcpl.core.breakpoint.BreakpointSetter;
-import pcpl.core.breakpoint.FileParaviserUtils;
 import pcpl.core.eventHandler.EventCenter;
 import pcpl.core.mode.TraceMode;
 

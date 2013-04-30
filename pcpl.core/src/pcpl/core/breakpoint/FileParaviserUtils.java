@@ -1,8 +1,5 @@
 package pcpl.core.breakpoint;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.StringWriter;
 import java.util.ArrayList;
 
 import org.eclipse.core.resources.IContainer;
@@ -13,8 +10,6 @@ import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
-
-import org.apache.commons.io.IOUtils;
 
 
 public class FileParaviserUtils {
