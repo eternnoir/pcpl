@@ -92,7 +92,8 @@ public class BreakpointManager {
 	    try {
 			InputStream s = f.getContents();
 			strings = IOUtils.toString(s,"UTF-8");
-			lines = strings.split(System.getProperty("line.separator"));
+			//lines = strings.split(System.getProperty("line.separator"));
+			lines = strings.split("\n");
 		} catch (CoreException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -118,7 +119,7 @@ public class BreakpointManager {
 	}
 	
 	private boolean checkFunction(String s){
-		if((s.indexOf("public") + s.indexOf("private"))>-1){	//判斷function
+		if((s.indexOf("public")>-1)||(s.indexOf("private")>-1)||(s.indexOf("protected")>-1)){	//判斷function
 			if((s.indexOf("(")>-1) && (s.indexOf("abstract")<0)){
 				return true;
 			}
