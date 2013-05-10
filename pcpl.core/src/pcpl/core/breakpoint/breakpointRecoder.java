@@ -13,7 +13,6 @@ public class breakpointRecoder {
 	}
 	
 	public void addBreakPointMarker(ILineBreakpoint lineBreakpoint,int mode){
-		//System.out.print(im.getResource().getFullPath().toString()+"\n");
 		if(mode == 1){
 			_bpsmN.add(lineBreakpoint);
 			System.out.print("1\n");
