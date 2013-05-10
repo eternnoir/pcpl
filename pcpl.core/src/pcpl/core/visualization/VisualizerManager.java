@@ -11,5 +11,7 @@ public class VisualizerManager {
 	
 	public VisualizerManager(){
 	}
-
+	public void addVisualizer(VisualizerListener vl){
+		
+	}
 }
