@@ -8,22 +8,6 @@
             label="Sample Action Set"
             visible="true"
             id="pcpl.simpleVisualizer.actionSet">
-         <menu
-               label="Sample &amp;Menu"
-               id="sampleMenu">
-            <separator
-                  name="sampleGroup">
-            </separator>
-         </menu>
-         <action
-               label="&amp;Sample Action"
-               icon="icons/sample.gif"
-               class="pcpl.simplevisualizer.actions.SampleAction"
-               tooltip="Hello, Eclipse world"
-               menubarPath="sampleMenu/sampleGroup"
-               toolbarPath="sampleGroup"
-               id="pcpl.simplevisualizer.actions.SampleAction">
-         </action>
       </actionSet>
    </extension>
    <requires>
