@@ -26,5 +26,21 @@
          </action>
       </actionSet>
    </extension>
+   <requires>
+        <import plugin="org.eclipse.core.boot"/>
+        <import plugin="org.eclipse.core.runtime"/>
+        <import plugin="org.eclipse.core.resources"/>
+        <import plugin="org.eclipse.swt"/>
+        <import plugin="org.eclipse.ui"/>
+	</requires>
 
+	<runtime>
+        <library name="views.jar"/>
+	</runtime>
+	<extension point="org.eclipse.ui.views">
+        <view id="pcpl.simpleVisualizer.BasicView"
+          name="Pcpl Basic View"
+          class="pcpl.simplevisualizer.views.BasicView"
+          icon="icons\view.gif"/>
+	</extension>	
 </plugin>
