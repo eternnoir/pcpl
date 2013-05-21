@@ -2,6 +2,7 @@ package pcpl.simplevisualizer.views;
 
 import java.awt.Frame;
 
+import org.jgraph.JGraph;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.awt.SWT_AWT;
 import org.eclipse.swt.widgets.Composite;
@@ -10,15 +11,19 @@ import org.eclipse.swt.widgets.*;
 
 public class BasicView extends ViewPart {
 	private Label label;
+	Composite composite;
+	Frame frame;
 	public BasicView(){
 		super();
-		Composite composite = new Composite( null, SWT.EMBEDDED | SWT.NO_BACKGROUND);
-		Frame frame = SWT_AWT.new_Frame(composite);
 	}
 	@Override
 	public void createPartControl(Composite parent) {
         label = new Label(parent, 0);
         label.setText("Hello World");
+		composite= new Composite( parent, SWT.EMBEDDED | SWT.NO_BACKGROUND);
+		frame = SWT_AWT.new_Frame(composite);
+        JGraph graph = new JGraph();
+        frame.add(graph);
 	}
 
 	@Override
