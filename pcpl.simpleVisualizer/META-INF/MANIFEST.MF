@@ -9,4 +9,10 @@ Require-Bundle: org.eclipse.ui,
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ClassPath: lib/jgraph.jar,
- .
+ .,
+ lib/junit.jar,
+ lib/svnant.jar,
+ lib/svnClientAdapter.jar,
+ lib/TGGraphLayout.jar,
+ lib/xmlunit1.0.jar,
+ lib/jgrapht-jdk1.6.jar

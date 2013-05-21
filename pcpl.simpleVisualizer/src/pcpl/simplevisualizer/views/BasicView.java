@@ -2,7 +2,11 @@ package pcpl.simplevisualizer.views;
 
 import java.awt.Frame;
 
-import org.jgraph.JGraph;
+import org.jgraph.*;
+import org.jgraph.graph.DefaultEdge;
+import org.jgrapht.ListenableGraph;
+import org.jgrapht.ext.JGraphModelAdapter;
+import org.jgrapht.graph.ListenableDirectedGraph;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.awt.SWT_AWT;
 import org.eclipse.swt.widgets.Composite;
@@ -10,7 +14,7 @@ import org.eclipse.ui.part.ViewPart;
 import org.eclipse.swt.widgets.*;
 
 public class BasicView extends ViewPart {
-	private Label label;
+	private JGraphModelAdapter m_jgAdapter;
 	Composite composite;
 	Frame frame;
 	public BasicView(){
@@ -18,12 +22,21 @@ public class BasicView extends ViewPart {
 	}
 	@Override
 	public void createPartControl(Composite parent) {
-        label = new Label(parent, 0);
-        label.setText("Hello World");
 		composite= new Composite( parent, SWT.EMBEDDED | SWT.NO_BACKGROUND);
 		frame = SWT_AWT.new_Frame(composite);
-        JGraph graph = new JGraph();
-        frame.add(graph);
+		ListenableGraph g = new ListenableDirectedGraph( DefaultEdge.class );
+		m_jgAdapter = new JGraphModelAdapter( g );
+		JGraph graph = new JGraph(m_jgAdapter);
+		g.addVertex( "v1" );
+	    g.addVertex( "v2" );
+	    g.addVertex( "v3" );
+	    g.addVertex( "v4" );
+
+	    g.addEdge( "v1", "v2" );
+	    g.addEdge( "v2", "v3" );
+	    g.addEdge( "v3", "v1" );
+	    g.addEdge( "v4", "v3" );
+		frame.add(graph);
 	}
 
 	@Override
@@ -31,5 +44,7 @@ public class BasicView extends ViewPart {
 		// TODO Auto-generated method stub
 
 	}
-
+	private void createExecPath(ListenableDirectedGraph g){
+		
+	}
 }
