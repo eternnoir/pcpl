@@ -3,6 +3,8 @@ package pcpl.core.breakpoint;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.commons.io.IOUtils;
 import org.eclipse.core.resources.IFile;
@@ -15,7 +17,8 @@ import org.eclipse.debug.core.model.ILineBreakpoint;
 
 public class BreakpointManager {
 	private static BreakpointManager instance = null;
-	private  ArrayList<ILineBreakpoint> _result = null;
+	private ArrayList<ILineBreakpoint> _result = null;
+	private Map<IBreakpoint,IResource> _breakpointMap = null;
 	public static BreakpointManager getInstance() {
 		if (instance == null) {
 			instance = new BreakpointManager();
@@ -25,8 +28,8 @@ public class BreakpointManager {
 	
 	public BreakpointManager(){
 		_result = null;
+		_breakpointMap = new HashMap<IBreakpoint,IResource>();
 	}
-	
 	public ArrayList<ILineBreakpoint> diffResult(ArrayList<ILineBreakpoint> nor,ArrayList<ILineBreakpoint> rec){
 		for(ILineBreakpoint nm : nor){
 			while(rec.indexOf(nm)!= -1){
@@ -105,6 +108,16 @@ public class BreakpointManager {
 	    	BreakpointSetter.getInstance().setBreakpoint(r, i);
 	    }
 	    
+	}
+	
+	public void addBreakpointSet(IBreakpoint b, IResource r){
+		_breakpointMap.put(b, r);
+	}
+	
+	public IResource getResourceByBreakpoint(IBreakpoint b){
+		IResource ret = null;
+		ret = _breakpointMap.get(b);
+		return ret;
 	}
 	
 	private ArrayList<Integer> checkFunctionNameLineNumber(String[] line){
