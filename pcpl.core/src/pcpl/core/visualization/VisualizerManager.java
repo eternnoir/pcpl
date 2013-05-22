@@ -1,7 +1,11 @@
 package pcpl.core.visualization;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class VisualizerManager {
 	private static VisualizerManager instance = null;
+	 List<IVisualizer> _visualizerlist = new ArrayList<IVisualizer>();
 	public static VisualizerManager getInstance() {
 		if (instance == null) {
 			instance = new VisualizerManager();
@@ -11,7 +15,7 @@ public class VisualizerManager {
 	
 	public VisualizerManager(){
 	}
-	public void addVisualizer(VisualizerListener vl){
+	public void addVisualizer(IVisualizer vl){
 		
 	}
 }

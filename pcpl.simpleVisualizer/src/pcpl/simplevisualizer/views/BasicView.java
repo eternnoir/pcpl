@@ -13,7 +13,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipse.swt.widgets.*;
 
-public class BasicView extends ViewPart implements VisualizerListener{
+public class BasicView extends ViewPart implements IVisualizer{
 	private JGraphModelAdapter m_jgAdapter;
 	private String _name = null;
 	private String _id = null;
