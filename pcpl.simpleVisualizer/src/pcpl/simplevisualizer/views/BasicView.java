@@ -1,7 +1,7 @@
 package pcpl.simplevisualizer.views;
 
 import java.awt.Frame;
-
+import pcpl.core.visualization.*;
 import org.jgraph.*;
 import org.jgraph.graph.DefaultEdge;
 import org.jgrapht.ListenableGraph;
@@ -13,12 +13,16 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipse.swt.widgets.*;
 
-public class BasicView extends ViewPart {
+public class BasicView extends ViewPart implements VisualizerListener{
 	private JGraphModelAdapter m_jgAdapter;
+	private String _name = null;
+	private String _id = null;
 	Composite composite;
 	Frame frame;
 	public BasicView(){
 		super();
+		_name = "jGraph";
+		_id = "pcpl.simpleVisualizer.BasicView";
 	}
 	@Override
 	public void createPartControl(Composite parent) {
@@ -46,5 +50,15 @@ public class BasicView extends ViewPart {
 	}
 	private void createExecPath(ListenableDirectedGraph g){
 		
+	}
+		
+	@Override
+	public String getVisualizerName() {
+		return _name;
+	}
+	@Override
+	public String getVisualizerID() {
+		// TODO Auto-generated method stub
+		return _id;
 	}
 }

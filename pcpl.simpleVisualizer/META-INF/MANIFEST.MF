@@ -5,7 +5,8 @@ Bundle-SymbolicName: pcpl.simpleVisualizer; singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: pcpl.simplevisualizer.Activator
 Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime
+ org.eclipse.core.runtime,
+ pcpl.core;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ClassPath: lib/jgraph.jar,
