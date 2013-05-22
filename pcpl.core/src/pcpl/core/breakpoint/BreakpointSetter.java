@@ -25,7 +25,7 @@ public class BreakpointSetter {
 			IBreakpoint bp = JDIDebugModel.createLineBreakpoint(resource,typeName, lineNum, -1, -1, 0,true,null);
 			BreakpointManager.getInstance().addBreakpointSet(bp, resource);
 			DebugPlugin.getDefault().getBreakpointManager().addBreakpoint(bp);
-			System.out.print("setBreakpointat "+typeName+":"+lineNum+"\n");
+			System.out.print("setBreakpoint at "+typeName+":"+lineNum+"\n");
 		} catch (CoreException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

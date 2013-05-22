@@ -5,7 +5,7 @@ import java.util.List;
 
 public class VisualizerManager {
 	private static VisualizerManager instance = null;
-	 List<IVisualizer> _visualizerlist = new ArrayList<IVisualizer>();
+	 List<IVisualizer> _visualizerList = new ArrayList<IVisualizer>();
 	public static VisualizerManager getInstance() {
 		if (instance == null) {
 			instance = new VisualizerManager();
@@ -16,6 +16,6 @@ public class VisualizerManager {
 	public VisualizerManager(){
 	}
 	public void addVisualizer(IVisualizer vl){
-		
+		_visualizerList.add(vl);
 	}
 }
