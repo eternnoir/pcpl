@@ -105,7 +105,10 @@ public class EventCenter {
 	public AbstractMode getRecMode(){
 		return _recordMode;
 	}
-
+	public List<AbstractMode> getModeList(){
+		assert(_modeList != null);
+		return _modeList;
+	}
 
 
 }

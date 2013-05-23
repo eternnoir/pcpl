@@ -3,7 +3,11 @@ package pcpl.core.handlers;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.handlers.HandlerUtil;
+
 import pcpl.core.breakpoint.BreakpointManager;
 import pcpl.core.eventHandler.EventCenter;
 import pcpl.core.mode.TraceMode;
@@ -37,8 +41,14 @@ public class SampleHandler extends AbstractHandler {
 				window.getShell(),
 				"Core",
 				"Hello, Eclipse world");*/
-		//_dialog.exec();
+		//_dialog.setInput(EventCenter.getInstance().getModeList());
+		//_dialog.run();
 		if(EventCenter.getInstance().getModeType() == 0){		//normal mode
+			IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
+			MessageDialog.openInformation(
+					window.getShell(),
+					"Core",
+					"PCPL Plugin is started");
 			BreakpointManager.getInstance().removeAllBreakpoint();
 			BreakpointManager.getInstance().setAllBreakpoint();
 			EventCenter.getInstance().setModeType(1);

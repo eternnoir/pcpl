@@ -2,13 +2,17 @@ package pcpl.core.launch;
 
 import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.internal.core.LaunchManager;
+import org.eclipse.swt.widgets.Display;
+
+import pcpl.core.eventHandler.EventCenter;
+import pcpl.core.ui.pcplDialog;
 
 
 
 
 
 public class pcplLauncher extends pcplLaunchListener {
-	
+	private pcplDialog _dialog;
 	
 	private static pcplLauncher instance = null;
 	public static pcplLauncher getInstance() {
@@ -24,7 +28,6 @@ public class pcplLauncher extends pcplLaunchListener {
 		try {
 			String launchMode = launch.getLaunchMode();
 			if (launchMode.equals(LaunchManager.DEBUG_MODE)) {
-
 				} else {
 					System.err.println("Not in Debug Mode");
 				}
