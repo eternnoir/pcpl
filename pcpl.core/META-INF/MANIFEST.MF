@@ -31,4 +31,5 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: org.eclipse.jdt.debug.core,
  org.eclipse.jdt.internal.debug.core,
  org.eclipse.jdt.internal.debug.core.model
-Export-Package: pcpl.core.visualization
+Export-Package: pcpl.core.eventHandler,
+ pcpl.core.visualization
