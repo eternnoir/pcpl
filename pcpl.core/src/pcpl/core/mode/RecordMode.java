@@ -60,6 +60,12 @@ public class RecordMode extends AbstractMode {
 	public void onTargetTerminated() {		
 		BreakpointManager.getInstance().diffResult(_bpr.getResultN(),_bpr.getResultR());
 	}
+
+	@Override
+	public void init() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 }

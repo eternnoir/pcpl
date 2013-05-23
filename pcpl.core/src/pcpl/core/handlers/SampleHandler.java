@@ -3,10 +3,11 @@ package pcpl.core.handlers;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-
+import org.eclipse.swt.widgets.Display;
 import pcpl.core.breakpoint.BreakpointManager;
 import pcpl.core.eventHandler.EventCenter;
 import pcpl.core.mode.TraceMode;
+import pcpl.core.ui.pcplDialog;
 
 /**
  * Our sample handler extends AbstractHandler, an IHandler base class.
@@ -17,7 +18,13 @@ public class SampleHandler extends AbstractHandler {
 	/**
 	 * The constructor.
 	 */
+	private pcplDialog _dialog;
 	public SampleHandler() {
+		initDialog();
+	}
+
+	private void initDialog() {
+		_dialog = new pcplDialog(Display.getDefault().getActiveShell());
 	}
 
 	/**
@@ -30,7 +37,7 @@ public class SampleHandler extends AbstractHandler {
 				window.getShell(),
 				"Core",
 				"Hello, Eclipse world");*/
-		
+		//_dialog.exec();
 		if(EventCenter.getInstance().getModeType() == 0){		//normal mode
 			BreakpointManager.getInstance().removeAllBreakpoint();
 			BreakpointManager.getInstance().setAllBreakpoint();
@@ -45,8 +52,6 @@ public class SampleHandler extends AbstractHandler {
 		else if(EventCenter.getInstance().getModeType() == 2){//record mode
 			EventCenter.getInstance().removeBreakPointListener(EventCenter.getInstance().getRecMode());
 			//EventCenter.getInstance().setMode(EventCenter.getInstance().getNorMode());
-			TraceMode t = new TraceMode();
-			EventCenter.getInstance().setTraMode(t);
 			EventCenter.getInstance().setModeType(3);
 			System.out.print("change Mode Type 3\n");
 		}

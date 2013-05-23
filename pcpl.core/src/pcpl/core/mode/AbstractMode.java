@@ -34,6 +34,8 @@ public abstract class AbstractMode implements BreakPointListener,
 
 	}
 	
+	abstract public void init();
+	
 	public int getMode(){
 		return _modeType;
 	}

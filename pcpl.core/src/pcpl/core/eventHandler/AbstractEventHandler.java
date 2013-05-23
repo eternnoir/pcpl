@@ -36,7 +36,12 @@ public abstract class AbstractEventHandler implements IDebugEventSetListener {
 	public void addTargetTerminationListener(TargetTerminationListener l) {
 		this.terminationListeners.add(l);
 	}
-
+	public void clearAllBreakpointListener(){
+		this.bpListeners.clear();
+	}
+	public void clearTargetTerminationListener(){
+		this.terminationListeners.clear();
+	}
 
 	@Override
 	public void handleDebugEvents(DebugEvent[] events) {

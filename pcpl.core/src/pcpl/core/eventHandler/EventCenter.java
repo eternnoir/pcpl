@@ -1,8 +1,14 @@
 package pcpl.core.eventHandler;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.debug.core.DebugPlugin;
 
 import pcpl.core.mode.AbstractMode;
+import pcpl.core.mode.NormalMode;
+import pcpl.core.mode.RecordMode;
+import pcpl.core.mode.TraceMode;
 
 public class EventCenter {
 	private static EventCenter instance = null;
@@ -10,7 +16,9 @@ public class EventCenter {
 	private int  _currentModeType;
 	private AbstractMode  _normalMode;
 	private AbstractMode  _recordMode;
-
+	private AbstractMode  _traceMode;
+	private List<AbstractMode> _modeList;
+	
 	public static EventCenter getInstance() {
 		if (instance == null) {
 			instance = new EventCenter();
@@ -22,8 +30,13 @@ public class EventCenter {
 		handler = new BasicEventHandler();
 		DebugPlugin.getDefault().addDebugEventListener(handler);
 		_currentModeType = 0;
-		_normalMode = null;
-		_recordMode = null;
+		_normalMode = new NormalMode();
+		_recordMode = new RecordMode();
+		_traceMode = new TraceMode();
+		_modeList = new ArrayList<AbstractMode>();
+		_modeList.add(_normalMode);
+		_modeList.add(_recordMode);
+		_modeList.add(_traceMode);
 	}
 
 	public void addBreakPointListener(BreakPointListener listener) {
@@ -53,26 +66,36 @@ public class EventCenter {
 	
 	public void setModeType(int m){
 		_currentModeType = m;
+		if(m == 1){
+			this.setRecMode();
+		}
+		else if(m == 3){
+			this.setTraMode();
+		}
 	}
 	
 	public int getModeType(){
 		
 		return _currentModeType;
 	}
-	public void setNorMode(AbstractMode m){
-		_normalMode = m;
+	public void setNorMode(){
 		//this.addBreakPointListener(m);
 		//this.addTargetTerminationListener(m);
 	}
-	public void setRecMode(AbstractMode m){
-		_recordMode = m;
-		this.addBreakPointListener(m);
-		this.addTargetTerminationListener(m);
+	public void setRecMode(){
+		this.handler.clearAllBreakpointListener();
+		this.handler.clearTargetTerminationListener();
+		_recordMode.init();
+		this.addBreakPointListener(_recordMode);
+		this.addTargetTerminationListener(_recordMode);
 	}
-	public void setTraMode(AbstractMode m){
-		_recordMode = m;
-		this.addBreakPointListener(m);
-		this.addTargetTerminationListener(m);
+	public void setTraMode(){
+		this.handler.clearAllBreakpointListener();
+		this.handler.clearTargetTerminationListener();
+		_traceMode.init();
+		this.handler.clearAllBreakpointListener();
+		this.addBreakPointListener(_traceMode);
+		this.addTargetTerminationListener(_traceMode);
 	}
 	
 	

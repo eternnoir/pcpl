@@ -60,5 +60,10 @@ public class NormalMode extends AbstractMode {
 			}
 		}
 	}
+	@Override
+	public void init() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

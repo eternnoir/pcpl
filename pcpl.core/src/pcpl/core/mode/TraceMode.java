@@ -15,8 +15,6 @@ public class TraceMode extends AbstractMode implements BreakPointListener,
 	private IDebugTarget[] _debugTargets = null;
 	public TraceMode(){
 		_modeType = 3;
-		BreakpointManager.getInstance().disableAllBreakpoint();
-		BreakpointManager.getInstance().setResult();
 	}
 	
 	public void onBreakPointTriggered(IVariable[] variables,IBreakpoint breakpoint) {
@@ -31,4 +29,10 @@ public class TraceMode extends AbstractMode implements BreakPointListener,
 
 	}
 
+	@Override
+	public void init() {
+		BreakpointManager.getInstance().disableAllBreakpoint();
+		BreakpointManager.getInstance().setResult();
+	}
+	
 }
