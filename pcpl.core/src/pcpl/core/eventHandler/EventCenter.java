@@ -83,17 +83,14 @@ public class EventCenter {
 		//this.addTargetTerminationListener(m);
 	}
 	public void setRecMode(){
-		this.handler.clearAllBreakpointListener();
-		this.handler.clearTargetTerminationListener();
 		_recordMode.init();
 		this.addBreakPointListener(_recordMode);
 		this.addTargetTerminationListener(_recordMode);
 	}
 	public void setTraMode(){
-		this.handler.clearAllBreakpointListener();
-		this.handler.clearTargetTerminationListener();
+		this.removeBreakPointListener(_recordMode);
+		this.removeTargetTerminationListener(_recordMode);
 		_traceMode.init();
-		this.handler.clearAllBreakpointListener();
 		this.addBreakPointListener(_traceMode);
 		this.addTargetTerminationListener(_traceMode);
 	}

@@ -18,4 +18,7 @@ public class VisualizerManager {
 	public void addVisualizer(IVisualizer vl){
 		_visualizerList.add(vl);
 	}
+	public List<IVisualizer> getVisualizerList(){
+		return _visualizerList;
+	}
 }

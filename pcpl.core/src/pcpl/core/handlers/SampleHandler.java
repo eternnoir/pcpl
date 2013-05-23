@@ -60,7 +60,6 @@ public class SampleHandler extends AbstractHandler {
 			System.out.print("change Mode Type 2\n");
 		}
 		else if(EventCenter.getInstance().getModeType() == 2){//record mode
-			EventCenter.getInstance().removeBreakPointListener(EventCenter.getInstance().getRecMode());
 			//EventCenter.getInstance().setMode(EventCenter.getInstance().getNorMode());
 			EventCenter.getInstance().setModeType(3);
 			System.out.print("change Mode Type 3\n");

@@ -2,19 +2,26 @@ package pcpl.simplevisualizer.views;
 
 import java.awt.Frame;
 import pcpl.core.visualization.*;
+import pcpl.core.eventHandler.*;
 import org.jgraph.*;
 import org.jgraph.graph.DefaultEdge;
 import org.jgrapht.ListenableGraph;
 import org.jgrapht.ext.JGraphModelAdapter;
 import org.jgrapht.graph.ListenableDirectedGraph;
+import org.eclipse.debug.core.model.IBreakpoint;
+import org.eclipse.debug.core.model.IVariable;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.awt.SWT_AWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipse.swt.widgets.*;
 
-public class BasicView extends ViewPart implements IVisualizer{
+public class BasicView extends ViewPart implements IVisualizer
+						, BreakPointListener{
 	private JGraphModelAdapter m_jgAdapter;
+	private ListenableGraph g;
+	private JGraph graph;
+	private int i;
 	private String _name = null;
 	private String _id = null;
 	Composite composite;
@@ -23,24 +30,18 @@ public class BasicView extends ViewPart implements IVisualizer{
 		super();
 		_name = "jGraph";
 		_id = "pcpl.simpleVisualizer.BasicView";
+		EventCenter.getInstance().addBreakPointListener(this);
 	}
 	@Override
 	public void createPartControl(Composite parent) {
 		composite= new Composite( parent, SWT.EMBEDDED | SWT.NO_BACKGROUND);
 		frame = SWT_AWT.new_Frame(composite);
-		ListenableGraph g = new ListenableDirectedGraph( DefaultEdge.class );
+		g = new ListenableDirectedGraph( DefaultEdge.class );
 		m_jgAdapter = new JGraphModelAdapter( g );
-		JGraph graph = new JGraph(m_jgAdapter);
-		g.addVertex( "v1" );
-	    g.addVertex( "v2" );
-	    g.addVertex( "v3" );
-	    g.addVertex( "v4" );
-
-	    g.addEdge( "v1", "v2" );
-	    g.addEdge( "v2", "v3" );
-	    g.addEdge( "v3", "v1" );
-	    g.addEdge( "v4", "v3" );
+		graph = new JGraph(m_jgAdapter);
+		g.addVertex( "Weclome" );
 		frame.add(graph);
+		i=0;
 	}
 
 	@Override
@@ -60,5 +61,21 @@ public class BasicView extends ViewPart implements IVisualizer{
 	public String getVisualizerID() {
 		// TODO Auto-generated method stub
 		return _id;
+	}
+	@Override
+	public void onBreakPointTriggered(IVariable[] variables,
+			IBreakpoint breakpoint) {
+		if(EventCenter.getInstance().getModeType() == 3){
+			this.update();
+		}
+		i++;
+		g.addVertex(i);
+	}
+	
+	private void update(){
+		
+	}
+	private void init(){
+
 	}
 }
