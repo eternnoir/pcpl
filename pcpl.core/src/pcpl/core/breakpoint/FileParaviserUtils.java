@@ -94,4 +94,9 @@ public class FileParaviserUtils {
 			className= path.toString().replace(IPath.SEPARATOR, '.');
 			return className;
 		}
+		
+		public static String[] splitClassName(String str){
+			String[] _strRet = str.split(".");
+			return _strRet;
+		}
 }

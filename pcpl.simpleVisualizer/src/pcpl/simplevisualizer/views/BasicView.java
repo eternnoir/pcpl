@@ -1,6 +1,10 @@
 package pcpl.simplevisualizer.views;
 
 import java.awt.Frame;
+import java.util.ArrayList;
+
+import pcpl.core.breakpoint.BreakpointManager;
+import pcpl.core.breakpoint.FileParaviserUtils;
 import pcpl.core.visualization.*;
 import pcpl.core.eventHandler.*;
 import org.jgraph.*;
@@ -10,6 +14,7 @@ import org.jgrapht.ext.JGraphModelAdapter;
 import org.jgrapht.graph.ListenableDirectedGraph;
 import org.eclipse.debug.core.DebugException;
 import org.eclipse.debug.core.model.IBreakpoint;
+import org.eclipse.debug.core.model.ILineBreakpoint;
 import org.eclipse.debug.core.model.IStackFrame;
 import org.eclipse.debug.core.model.IVariable;
 import org.eclipse.jdt.internal.debug.core.model.JDIStackFrame;
@@ -25,7 +30,9 @@ public class BasicView extends ViewPart implements IVisualizer
 	private ListenableGraph g;
 	private JGraph graph;
 	private IStackFrame[] _stacks;
-	private int i;
+	private ArrayList<Object> _graphObjectList;
+	private IBreakpoint _susBP;
+	private int _nodeNumber;
 	private String _name = null;
 	private String _id = null;
 	Composite composite;
@@ -34,6 +41,8 @@ public class BasicView extends ViewPart implements IVisualizer
 		super();
 		_name = "jGraph";
 		_id = "pcpl.simpleVisualizer.BasicView";
+		_nodeNumber = 5;
+		_graphObjectList = new ArrayList<Object>();
 		EventCenter.getInstance().addBreakPointListener(this);
 	}
 	@Override
@@ -43,9 +52,7 @@ public class BasicView extends ViewPart implements IVisualizer
 		g = new ListenableDirectedGraph( DefaultEdge.class );
 		m_jgAdapter = new JGraphModelAdapter( g );
 		graph = new JGraph(m_jgAdapter);
-		g.addVertex( "Weclome" );
 		frame.add(graph);
-		i=0;
 	}
 
 	@Override
@@ -70,6 +77,7 @@ public class BasicView extends ViewPart implements IVisualizer
 	public void onBreakPointTriggered(IVariable[] variables,
 			IBreakpoint breakpoint,IStackFrame[] stacks) {
 		_stacks = stacks;
+		_susBP = breakpoint;
 		if(EventCenter.getInstance().getModeType() == 3){
 			this.update();
 		}
@@ -77,23 +85,42 @@ public class BasicView extends ViewPart implements IVisualizer
 	
 	private void update(){
 		this.clearGraph();
-		//JDIStackFrame j = (JDIStackFrame)_stacks[0];
-		try {
-			for(int i =0;i<_stacks.length;i++){
-				JDIStackFrame j = (JDIStackFrame)_stacks[i];
-				String s = j.getReceivingTypeName();
-				g.addVertex(s);
-			}
-		} catch (DebugException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+		this.setPreStackFrame(_nodeNumber);
+		this.setPosStackFrame(_nodeNumber);
 	}
 	private void init(){
 
 	}
 	
 	private void clearGraph(){
+		g.removeAllVertices(_graphObjectList);
+	}
+	private void setPreStackFrame(int num){
+		try{
+			// set before stackframe
+			for(int i =0;i<_stacks.length&&i<num;i++){
+				JDIStackFrame j = (JDIStackFrame)_stacks[i];
+				String s = j.getReceivingTypeName();
+				_graphObjectList.add(s);
+				g.addVertex(s);
+			}
+		}
+		catch (DebugException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private void setPosStackFrame(int num){
+		ArrayList<ILineBreakpoint> _bpsmN = BreakpointManager.getInstance().getNormalSet();
+		ArrayList<ILineBreakpoint> _bpsmR = BreakpointManager.getInstance().getNormalSet();
+		int index = _bpsmN.indexOf(_susBP);
+		assert(index > 0);	//can not find breakpoint in nor set ,it is wired
+		for(int i = index ;i<index+num && i<_bpsmN.size();i++){
+			String _strClassName =FileParaviserUtils.getClassName( 
+			BreakpointManager.getInstance().getResourceByBreakpoint(_bpsmN.get(i)));
+			String[] _strClassNameList = FileParaviserUtils.splitClassName(_strClassName); 
+			_graphObjectList.add(_strClassNameList[_strClassNameList.length-1]);
+			g.addVertex(_strClassNameList[_strClassNameList.length-1]);
+		}
 	}
 }
