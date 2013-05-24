@@ -9,6 +9,7 @@ import org.jgrapht.ListenableGraph;
 import org.jgrapht.ext.JGraphModelAdapter;
 import org.jgrapht.graph.ListenableDirectedGraph;
 import org.eclipse.debug.core.model.IBreakpoint;
+import org.eclipse.debug.core.model.IStackFrame;
 import org.eclipse.debug.core.model.IVariable;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.awt.SWT_AWT;
@@ -64,7 +65,7 @@ public class BasicView extends ViewPart implements IVisualizer
 	}
 	@Override
 	public void onBreakPointTriggered(IVariable[] variables,
-			IBreakpoint breakpoint) {
+			IBreakpoint breakpoint,IStackFrame[] stacks) {
 		if(EventCenter.getInstance().getModeType() == 3){
 			this.update();
 		}
