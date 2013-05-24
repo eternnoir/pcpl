@@ -2,6 +2,7 @@ package pcpl.core.mode;
 
 import org.eclipse.debug.core.model.IBreakpoint;
 import org.eclipse.debug.core.model.IDebugTarget;
+import org.eclipse.debug.core.model.IStackFrame;
 import org.eclipse.debug.core.model.IVariable;
 
 import pcpl.core.breakpoint.breakpointRecoder;
@@ -29,7 +30,7 @@ public abstract class AbstractMode implements BreakPointListener,
 
 	@Override
 	public void onBreakPointTriggered(IVariable[] variables,
-			IBreakpoint breakpoint) {
+			IBreakpoint breakpoint, IStackFrame[] stacks) {
 		// TODO Auto-generated method stub
 
 	}

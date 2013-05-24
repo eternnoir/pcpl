@@ -7,6 +7,7 @@ import org.eclipse.debug.core.DebugPlugin;
 import org.eclipse.debug.core.model.IBreakpoint;
 import org.eclipse.debug.core.model.IDebugTarget;
 import org.eclipse.debug.core.model.ILineBreakpoint;
+import org.eclipse.debug.core.model.IStackFrame;
 import org.eclipse.debug.core.model.IVariable;
 
 import pcpl.core.breakpoint.breakpointRecoder;
@@ -21,7 +22,7 @@ public class NormalMode extends AbstractMode {
 		_modeType = 1;
 	}
 	public void onBreakPointTriggered(IVariable[] variables,
-			IBreakpoint breakpoint) {
+			IBreakpoint breakpoint, IStackFrame[] stacks) {
 		_debugTargets = DebugPlugin.getDefault().getLaunchManager().getDebugTargets();
 		if(EventCenter.getInstance().getModeType() == 2)
 			return;

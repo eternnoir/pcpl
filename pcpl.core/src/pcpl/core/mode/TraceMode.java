@@ -5,6 +5,7 @@ import java.util.List;
 import org.eclipse.debug.core.DebugPlugin;
 import org.eclipse.debug.core.model.IBreakpoint;
 import org.eclipse.debug.core.model.IDebugTarget;
+import org.eclipse.debug.core.model.IStackFrame;
 import org.eclipse.debug.core.model.IVariable;
 
 import pcpl.core.breakpoint.BreakpointManager;
@@ -22,7 +23,7 @@ public class TraceMode extends AbstractMode implements BreakPointListener,
 		_modeType = 3;
 	}
 	
-	public void onBreakPointTriggered(IVariable[] variables,IBreakpoint breakpoint) {
+	public void onBreakPointTriggered(IVariable[] variables,IBreakpoint breakpoint, IStackFrame[] stacks) {
 		//ILineBreakpoint lineBreakpoint = (ILineBreakpoint) breakpoint;
 		//int mode = EventCenter.getInstance().getModeType();
 		_debugTargets = DebugPlugin.getDefault().getLaunchManager().getDebugTargets();

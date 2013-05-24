@@ -30,9 +30,10 @@ public class BasicEventHandler extends AbstractEventHandler {
 					if (thread.hasStackFrames()) {
 						IBreakpoint[] bps = thread.getBreakpoints();
 						IStackFrame stack = thread.getTopStackFrame();
+						IStackFrame[] stacks = thread.getStackFrames();
 						IVariable[] variables = stack.getVariables();
 						for (BreakPointListener listener : this.bpListeners) {
-							listener.onBreakPointTriggered(variables, bps[0]);
+							listener.onBreakPointTriggered(variables, bps[0], stacks);
 						}
 						ok = true;
 					}

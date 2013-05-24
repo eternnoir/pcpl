@@ -79,10 +79,16 @@ public class FileParaviserUtils {
 			IFile f = ResourcesPlugin.getWorkspace().getRoot().getFileForLocation(r.getLocation());
 			String className;
 			IPath path = f.getFullPath();
-			while (!path.segment(0).equalsIgnoreCase("src")){
-				path = path.removeFirstSegments(1);
-				path = path.removeFileExtension();
+			try{
+				while (!path.segment(0).equalsIgnoreCase("src")){
+					path = path.removeFirstSegments(1);
+					path = path.removeFileExtension();
+				}
 			}
+			catch(Exception ex){
+				
+			}
+			
 			path = path.removeFirstSegments(1);
 			path = path.removeFileExtension();
 			className= path.toString().replace(IPath.SEPARATOR, '.');

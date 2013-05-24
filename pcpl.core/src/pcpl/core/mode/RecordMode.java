@@ -6,6 +6,7 @@ import org.eclipse.debug.core.DebugPlugin;
 import org.eclipse.debug.core.model.IBreakpoint;
 import org.eclipse.debug.core.model.IDebugTarget;
 import org.eclipse.debug.core.model.ILineBreakpoint;
+import org.eclipse.debug.core.model.IStackFrame;
 import org.eclipse.debug.core.model.IVariable;
 
 import pcpl.core.breakpoint.BreakpointManager;
@@ -21,7 +22,7 @@ public class RecordMode extends AbstractMode {
 		_modeType = 2;
 	}
 	
-	public void onBreakPointTriggered(IVariable[] variables,IBreakpoint breakpoint) {
+	public void onBreakPointTriggered(IVariable[] variables,IBreakpoint breakpoint, IStackFrame[] stacks) {
 		ILineBreakpoint lineBreakpoint = (ILineBreakpoint) breakpoint;
 		int mode = EventCenter.getInstance().getModeType();
 		_debugTargets = DebugPlugin.getDefault().getLaunchManager().getDebugTargets();
