@@ -1,14 +1,17 @@
 package pcpl.simplevisualizer.views;
 
 import java.awt.Frame;
+import java.awt.Rectangle;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
-import pcpl.core.breakpoint.BreakpointManager;
-import pcpl.core.breakpoint.FileParaviserUtils;
 import pcpl.core.visualization.*;
 import pcpl.core.eventHandler.*;
 import org.jgraph.*;
 import org.jgraph.graph.DefaultEdge;
+import org.jgraph.graph.DefaultGraphCell;
+import org.jgraph.graph.GraphConstants;
 import org.jgrapht.ListenableGraph;
 import org.jgrapht.ext.JGraphModelAdapter;
 import org.jgrapht.graph.ListenableDirectedGraph;
@@ -101,8 +104,9 @@ public class BasicView extends ViewPart implements IVisualizer
 			for(int i =0;i<_stacks.length&&i<num;i++){
 				JDIStackFrame j = (JDIStackFrame)_stacks[i];
 				String s = j.getReceivingTypeName();
-				_graphObjectList.add(s);
-				g.addVertex(s);
+				String[] _strClassNameList = FileParaviserUtils.splitClassName(s); 
+				_graphObjectList.add(_strClassNameList[_strClassNameList.length-1]);
+				g.addVertex(_strClassNameList[_strClassNameList.length-1]);
 			}
 		}
 		catch (DebugException e) {
@@ -111,16 +115,27 @@ public class BasicView extends ViewPart implements IVisualizer
 	}
 	
 	private void setPosStackFrame(int num){
-		ArrayList<ILineBreakpoint> _bpsmN = BreakpointManager.getInstance().getNormalSet();
-		ArrayList<ILineBreakpoint> _bpsmR = BreakpointManager.getInstance().getNormalSet();
-		int index = _bpsmN.indexOf(_susBP);
-		assert(index > 0);	//can not find breakpoint in nor set ,it is wired
+		ArrayList<ILineBreakpoint> _bpsmN= VisualizerManager.getInstance().getNorSet();
+		ArrayList<ILineBreakpoint> _bpsmR = VisualizerManager.getInstance().getRecSet();
+		int index = _bpsmR.indexOf((ILineBreakpoint)_susBP);
 		for(int i = index ;i<index+num && i<_bpsmN.size();i++){
 			String _strClassName =FileParaviserUtils.getClassName( 
-			BreakpointManager.getInstance().getResourceByBreakpoint(_bpsmN.get(i)));
+					VisualizerManager.getInstance().getResourceByBreakpoint(_bpsmN.get(i)));
 			String[] _strClassNameList = FileParaviserUtils.splitClassName(_strClassName); 
 			_graphObjectList.add(_strClassNameList[_strClassNameList.length-1]);
 			g.addVertex(_strClassNameList[_strClassNameList.length-1]);
 		}
 	}
+	
+	  private void positionVertexAt( Object vertex, int x, int y ) {
+	        DefaultGraphCell cell = m_jgAdapter.getVertexCell( vertex );
+	        Map              attr = cell.getAttributes(  );
+	        Rectangle        b    = (Rectangle) GraphConstants.getBounds( attr );
+
+	        GraphConstants.setBounds( attr, new Rectangle( x, y, b.width, b.height ) );
+
+	        Map cellAttr = new HashMap(  );
+	        cellAttr.put( cell, attr );
+	        m_jgAdapter.edit( cellAttr, null, null, null );
+	    }
 }
