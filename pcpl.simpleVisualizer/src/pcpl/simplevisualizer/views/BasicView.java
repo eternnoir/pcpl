@@ -69,8 +69,7 @@ public class BasicView extends ViewPart implements IVisualizer
 		if(EventCenter.getInstance().getModeType() == 3){
 			this.update();
 		}
-		i++;
-		g.addVertex(i);
+
 	}
 	
 	private void update(){
