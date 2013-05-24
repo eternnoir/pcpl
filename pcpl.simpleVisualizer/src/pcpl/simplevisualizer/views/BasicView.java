@@ -1,14 +1,9 @@
 package pcpl.simplevisualizer.views;
 
-import java.awt.Color;
-import java.awt.Dimension;
+
 import java.awt.Frame;
-import java.awt.Rectangle;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
 import pcpl.core.visualization.*;
 import pcpl.core.eventHandler.*;
 import org.jgraph.*;
@@ -29,7 +24,6 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.awt.SWT_AWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.ViewPart;
-import org.eclipse.swt.widgets.*;
 
 public class BasicView extends ViewPart implements IVisualizer
 						, BreakPointListener{
@@ -142,7 +136,7 @@ public class BasicView extends ViewPart implements IVisualizer
         AttributeMap attr = cell.getAttributes();
         Rectangle2D bounds = GraphConstants.getBounds(attr);
 
-        Rectangle2D newBounds = new Rectangle2D.Double(x,y,bounds.getWidth(),bounds.getHeight());
+        Rectangle2D newBounds = new Rectangle2D.Double(x,y,bounds.getWidth()+20,bounds.getHeight()+20);
 
         GraphConstants.setBounds(attr, newBounds);
 
