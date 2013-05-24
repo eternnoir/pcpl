@@ -1,7 +1,10 @@
 package pcpl.simplevisualizer.views;
 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.Rectangle;
+import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -9,6 +12,7 @@ import java.util.Map;
 import pcpl.core.visualization.*;
 import pcpl.core.eventHandler.*;
 import org.jgraph.*;
+import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.DefaultEdge;
 import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.GraphConstants;
@@ -90,6 +94,7 @@ public class BasicView extends ViewPart implements IVisualizer
 		this.clearGraph();
 		this.setPreStackFrame(_nodeNumber);
 		this.setPosStackFrame(_nodeNumber);
+		this.arrange();
 	}
 	private void init(){
 
@@ -105,7 +110,8 @@ public class BasicView extends ViewPart implements IVisualizer
 				JDIStackFrame j = (JDIStackFrame)_stacks[i];
 				String s = j.getReceivingTypeName();
 				String[] _strClassNameList = FileParaviserUtils.splitClassName(s); 
-				_graphObjectList.add(_strClassNameList[_strClassNameList.length-1]);
+				//_graphObjectList.add(_strClassNameList[_strClassNameList.length-1]);
+				_graphObjectList.add(0, _strClassNameList[_strClassNameList.length-1]);
 				g.addVertex(_strClassNameList[_strClassNameList.length-1]);
 			}
 		}
@@ -122,20 +128,31 @@ public class BasicView extends ViewPart implements IVisualizer
 			String _strClassName =FileParaviserUtils.getClassName( 
 					VisualizerManager.getInstance().getResourceByBreakpoint(_bpsmN.get(i)));
 			String[] _strClassNameList = FileParaviserUtils.splitClassName(_strClassName); 
-			_graphObjectList.add(_strClassNameList[_strClassNameList.length-1]);
-			g.addVertex(_strClassNameList[_strClassNameList.length-1]);
+			if(!g.containsVertex(_strClassNameList[_strClassNameList.length-1])){
+				_graphObjectList.add(_strClassNameList[_strClassNameList.length-1]);
+				g.addVertex(_strClassNameList[_strClassNameList.length-1]);
+			}
 		}
 	}
 	
-	  private void positionVertexAt( Object vertex, int x, int y ) {
-	        DefaultGraphCell cell = m_jgAdapter.getVertexCell( vertex );
-	        Map              attr = cell.getAttributes(  );
-	        Rectangle        b    = (Rectangle) GraphConstants.getBounds( attr );
+	private void positionVertexAt( Object vertex, int x, int y ) {
+		DefaultGraphCell cell = m_jgAdapter.getVertexCell(vertex);
+        AttributeMap attr = cell.getAttributes();
+        Rectangle2D bounds = GraphConstants.getBounds(attr);
 
-	        GraphConstants.setBounds( attr, new Rectangle( x, y, b.width, b.height ) );
+        Rectangle2D newBounds = new Rectangle2D.Double(x,y,bounds.getWidth(),bounds.getHeight());
 
-	        Map cellAttr = new HashMap(  );
-	        cellAttr.put( cell, attr );
-	        m_jgAdapter.edit( cellAttr, null, null, null );
-	    }
+        GraphConstants.setBounds(attr, newBounds);
+
+        // TODO: Clean up generics once JGraph goes generic
+        org.jgraph.graph.AttributeMap cellAttr = new AttributeMap();
+        cellAttr.put(cell, attr);
+        m_jgAdapter.edit(cellAttr, null, null, null);
+	}
+	private void arrange(){
+		int x = 100;
+		for(int i=0;i<_graphObjectList.size();i++){
+			positionVertexAt(_graphObjectList.get(i),x*i,50);
+		}
+	}
 }
