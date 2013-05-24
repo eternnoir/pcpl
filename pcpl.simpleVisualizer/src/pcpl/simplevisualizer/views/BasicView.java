@@ -24,7 +24,7 @@ public class BasicView extends ViewPart implements IVisualizer
 	private JGraphModelAdapter m_jgAdapter;
 	private ListenableGraph g;
 	private JGraph graph;
-	IStackFrame[] _stacks;
+	private IStackFrame[] _stacks;
 	private int i;
 	private String _name = null;
 	private String _id = null;
@@ -76,10 +76,14 @@ public class BasicView extends ViewPart implements IVisualizer
 	}
 	
 	private void update(){
-		JDIStackFrame j = (JDIStackFrame)_stacks[0];
+		this.clearGraph();
+		//JDIStackFrame j = (JDIStackFrame)_stacks[0];
 		try {
-			String s = j.getReceivingTypeName();
-			s = s;
+			for(int i =0;i<_stacks.length;i++){
+				JDIStackFrame j = (JDIStackFrame)_stacks[i];
+				String s = j.getReceivingTypeName();
+				g.addVertex(s);
+			}
 		} catch (DebugException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -88,5 +92,8 @@ public class BasicView extends ViewPart implements IVisualizer
 	}
 	private void init(){
 
+	}
+	
+	private void clearGraph(){
 	}
 }
