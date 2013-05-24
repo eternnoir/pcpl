@@ -56,11 +56,21 @@ public class SampleHandler extends AbstractHandler {
 			System.out.print("change Mode Type 1\n");
 		}
 		else if(EventCenter.getInstance().getModeType() == 1){		//normal mode
+			IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
+			MessageDialog.openInformation(
+					window.getShell(),
+					"Core",
+					"Now, Do something you want to trace");
 			EventCenter.getInstance().setModeType(2);
 			System.out.print("change Mode Type 2\n");
 		}
 		else if(EventCenter.getInstance().getModeType() == 2){//record mode
 			//EventCenter.getInstance().setMode(EventCenter.getInstance().getNorMode());
+			IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
+			MessageDialog.openInformation(
+					window.getShell(),
+					"Core",
+					"Change to TraceMode");
 			EventCenter.getInstance().setModeType(3);
 			System.out.print("change Mode Type 3\n");
 		}
