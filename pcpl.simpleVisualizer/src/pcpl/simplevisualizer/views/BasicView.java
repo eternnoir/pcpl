@@ -102,6 +102,8 @@ public class BasicView extends ViewPart implements IVisualizer
 	
 	private void clearGraph(){
 		g.removeAllVertices(_graphObjectList);
+		graph.removeAll();
+		_graphObjectList = new ArrayList<Object>();
 	}
 	private void setPreStackFrame(int num){
 		try{
@@ -150,9 +152,12 @@ public class BasicView extends ViewPart implements IVisualizer
         m_jgAdapter.edit(cellAttr, null, null, null);
 	}
 	private void arrange(){
-		int x = 100;
+		int x = 200;
 		for(int i=0;i<_graphObjectList.size();i++){
 			positionVertexAt(_graphObjectList.get(i),x*i,50);
+		}
+		for(int i=1;i<_graphObjectList.size();i++){
+			g.addEdge(_graphObjectList.get(i-1),_graphObjectList.get(i));
 		}
 	}
 }
