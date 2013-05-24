@@ -8,9 +8,11 @@ import org.jgraph.graph.DefaultEdge;
 import org.jgrapht.ListenableGraph;
 import org.jgrapht.ext.JGraphModelAdapter;
 import org.jgrapht.graph.ListenableDirectedGraph;
+import org.eclipse.debug.core.DebugException;
 import org.eclipse.debug.core.model.IBreakpoint;
 import org.eclipse.debug.core.model.IStackFrame;
 import org.eclipse.debug.core.model.IVariable;
+import org.eclipse.jdt.internal.debug.core.model.JDIStackFrame;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.awt.SWT_AWT;
 import org.eclipse.swt.widgets.Composite;
@@ -22,6 +24,7 @@ public class BasicView extends ViewPart implements IVisualizer
 	private JGraphModelAdapter m_jgAdapter;
 	private ListenableGraph g;
 	private JGraph graph;
+	IStackFrame[] _stacks;
 	private int i;
 	private String _name = null;
 	private String _id = null;
@@ -66,13 +69,21 @@ public class BasicView extends ViewPart implements IVisualizer
 	@Override
 	public void onBreakPointTriggered(IVariable[] variables,
 			IBreakpoint breakpoint,IStackFrame[] stacks) {
+		_stacks = stacks;
 		if(EventCenter.getInstance().getModeType() == 3){
 			this.update();
 		}
-
 	}
 	
 	private void update(){
+		JDIStackFrame j = (JDIStackFrame)_stacks[0];
+		try {
+			String s = j.getReceivingTypeName();
+			s = s;
+		} catch (DebugException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	private void init(){
