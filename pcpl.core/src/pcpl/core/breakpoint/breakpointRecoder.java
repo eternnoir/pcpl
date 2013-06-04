@@ -15,10 +15,10 @@ public class breakpointRecoder {
 	public void addBreakPointMarker(ILineBreakpoint lineBreakpoint,int mode){
 		if(mode == 1){
 			_bpsmN.add(lineBreakpoint);
-			System.out.print("1\n");
+			//System.out.print("1\n");
 		}
 		else{
-			System.out.print("2\n");
+			//System.out.print("2\n");
 			_bpsmR.add(lineBreakpoint);
 		}
 
