@@ -1,6 +1,8 @@
 package pcpl.core.breakpoint;
 
 import java.util.ArrayList;
+
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.debug.core.model.ILineBreakpoint;
 
 public class breakpointRecoder {
@@ -15,6 +17,14 @@ public class breakpointRecoder {
 	public void addBreakPointMarker(ILineBreakpoint lineBreakpoint,int mode){
 		if(mode == 1){
 			_bpsmN.add(lineBreakpoint);
+			
+			
+			try {
+				lineBreakpoint.setEnabled(false);
+			} catch (CoreException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			//System.out.print("1\n");
 		}
 		else{
