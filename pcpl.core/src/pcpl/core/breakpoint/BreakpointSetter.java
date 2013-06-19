@@ -22,7 +22,7 @@ public class BreakpointSetter {
 	public void setBreakpoint(IResource resource,int lineNum){
 		String typeName = FileParaviserUtils.getClassName(resource);	//javabreakpoint need this
 		try {
-			IBreakpoint bp = JDIDebugModel.createLineBreakpoint(resource,typeName, lineNum, -1, -1, 0,true,null);
+			IBreakpoint bp = JDIDebugModel.createLineBreakpoint(resource,typeName, lineNum+1, -1, -1, 0,true,null);
 			BreakpointManager.getInstance().addBreakpointSet(bp, resource);
 			DebugPlugin.getDefault().getBreakpointManager().addBreakpoint(bp);
 			System.out.print("setBreakpoint at "+typeName+":"+lineNum+"\n");
