@@ -48,7 +48,7 @@ public class SampleHandler extends AbstractHandler {
 			MessageDialog.openInformation(
 					window.getShell(),
 					"Core",
-					"PCPL Plugin is started");
+					"EPLIC Plugin is started");
 			BreakpointManager.getInstance().removeAllBreakpoint();
 			BreakpointManager.getInstance().setAllBreakpoint();
 			EventCenter.getInstance().setModeType(1);
