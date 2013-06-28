@@ -18,14 +18,13 @@ public class breakpointRecoder {
 		if(mode == 1){
 			_bpsmN.add(lineBreakpoint);
 			
-			
+			// for performerce ,after add disable it
 			try {
 				lineBreakpoint.setEnabled(false);
 			} catch (CoreException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			//System.out.print("1\n");
 		}
 		else{
 			//System.out.print("2\n");
