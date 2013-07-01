@@ -54,7 +54,7 @@
             <command
                   commandId="pcpl.core.commands.sampleCommand"
                   icon="icons/sample.gif"
-                  tooltip="Say hello world"
+                  tooltip="Use EPLIC"
                   id="pcpl.core.toolbars.sampleCommand">
             </command>
          </toolbar>
