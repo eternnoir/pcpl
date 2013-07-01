@@ -17,10 +17,10 @@ import org.eclipse.debug.core.model.ILineBreakpoint;
 
 public class BreakpointManager {
 	private static BreakpointManager instance = null;
-	private ArrayList<ILineBreakpoint> _result = null;
+	private ArrayList<ILineBreakpoint> _result;
 	private ArrayList<ILineBreakpoint> _bpsmNS;
 	private ArrayList<ILineBreakpoint> _bpsmIS;
-	private Map<IBreakpoint,IResource> _breakpointMap = null;
+	private Map<IBreakpoint,IResource> _breakpointMap;
 	public static BreakpointManager getInstance() {
 		if (instance == null) {
 			instance = new BreakpointManager();
