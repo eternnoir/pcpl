@@ -18,8 +18,8 @@ import org.eclipse.debug.core.model.ILineBreakpoint;
 public class BreakpointManager {
 	private static BreakpointManager instance = null;
 	private ArrayList<ILineBreakpoint> _result = null;
-	private ArrayList<ILineBreakpoint> _bpsmN;
-	private ArrayList<ILineBreakpoint> _bpsmR;
+	private ArrayList<ILineBreakpoint> _bpsmNS;
+	private ArrayList<ILineBreakpoint> _bpsmIS;
 	private Map<IBreakpoint,IResource> _breakpointMap = null;
 	public static BreakpointManager getInstance() {
 		if (instance == null) {
@@ -31,12 +31,12 @@ public class BreakpointManager {
 	public BreakpointManager(){
 		_result = null;
 		_breakpointMap = new HashMap<IBreakpoint,IResource>();
-		_bpsmN = null;
-		_bpsmR = null;
+		_bpsmNS = null;
+		_bpsmIS = null;
 	}
 	public ArrayList<ILineBreakpoint> diffResult(ArrayList<ILineBreakpoint> nor,ArrayList<ILineBreakpoint> rec){
-		_bpsmN = nor;
-		_bpsmR = rec;
+		_bpsmNS = nor;
+		_bpsmIS = rec;
 		for(ILineBreakpoint nm : nor){
 			while(rec.indexOf(nm)!= -1){
 				rec.remove(nm);
@@ -127,10 +127,10 @@ public class BreakpointManager {
 	}
 	
 	public ArrayList<ILineBreakpoint> getNormalSet(){
-		return _bpsmN;
+		return _bpsmNS;
 	}
 	public ArrayList<ILineBreakpoint> getRecordSet(){
-		return _bpsmR;
+		return _bpsmIS;
 	}
 	
 	private ArrayList<Integer> checkFunctionNameLineNumber(String[] line){

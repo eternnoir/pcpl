@@ -27,7 +27,6 @@ public class breakpointRecoder {
 			}
 		}
 		else{
-			//System.out.print("2\n");
 			_bpsmR.add(lineBreakpoint);
 		}
 
