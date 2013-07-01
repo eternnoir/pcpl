@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Core
 Bundle-SymbolicName: pcpl.core; singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: pcpl.core.Activator
+Bundle-Activator: eplic.core.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.debug.core,
@@ -31,5 +31,5 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: org.eclipse.jdt.debug.core,
  org.eclipse.jdt.internal.debug.core,
  org.eclipse.jdt.internal.debug.core.model
-Export-Package: pcpl.core.eventHandler,
- pcpl.core.visualization
+Export-Package: eplic.core.eventHandler,
+ eplic.core.visualization

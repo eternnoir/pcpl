@@ -2,7 +2,7 @@
 <?eclipse version="3.4"?>
 <plugin>
   <extension point="org.eclipse.ui.startup">
-     <startup class="pcpl.core.StartUp"/>
+     <startup class="eplic.core.StartUp"/>
    </extension>
    <extension
          point="org.eclipse.ui.commands">
@@ -20,7 +20,7 @@
          point="org.eclipse.ui.handlers">
       <handler
             commandId="pcpl.core.commands.sampleCommand"
-            class="pcpl.core.handlers.SampleHandler">
+            class="eplic.core.handlers.SampleHandler">
       </handler>
    </extension>
    <extension
@@ -66,7 +66,7 @@
  <extension point="org.eclipse.debug.core.breakpoints">
    <breakpoint 
       id="pcpl.core.breakpoint.pcplBreakpoint"
-      class="pcpl.core.breakpoint.pcplBreakpoint"
+      class="eplic.core.breakpoint.pcplBreakpoint"
       markerType="org.eclipse.jdt.debug.javaLineBreakpointMarker">
    </breakpoint>
  </extension>
