@@ -57,7 +57,8 @@ public class RecordMode extends AbstractMode {
 	}
 	
 	public void onTargetTerminated() {		
-		//BreakpointManager.getInstance().diffResult(_bpr.getResultN(),_bpr.getResultR());
+		BreakpointManager.getInstance().diffResult(this._bpr.getBPS()
+				,EventCenter.getInstance().getNorMode().getBreakPointRecorder().getBPS());
 	}
 
 	@Override
