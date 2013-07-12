@@ -24,13 +24,11 @@ public class NormalMode extends AbstractMode {
 	public void onBreakPointTriggered(IVariable[] variables,
 			IBreakpoint breakpoint, IStackFrame[] stacks) {
 		_debugTargets = DebugPlugin.getDefault().getLaunchManager().getDebugTargets();
-		if(EventCenter.getInstance().getModeType() == 2)
-			return;
 		ILineBreakpoint lineBreakpoint = (ILineBreakpoint) breakpoint;
 		try{
 			IMarker m =lineBreakpoint.getMarker();
 			if(m!=null)
-			//	_bpr.addBreakPointMarker(m);
+			_bpr.addBreakPoint(lineBreakpoint);
 			this.cont();
 		}
 		catch(Exception ex){

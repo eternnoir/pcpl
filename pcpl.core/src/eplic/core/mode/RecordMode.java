@@ -24,14 +24,12 @@ public class RecordMode extends AbstractMode {
 	
 	public void onBreakPointTriggered(IVariable[] variables,IBreakpoint breakpoint, IStackFrame[] stacks) {
 		ILineBreakpoint lineBreakpoint = (ILineBreakpoint) breakpoint;
-		int mode = EventCenter.getInstance().getModeType();
 		_debugTargets = DebugPlugin.getDefault().getLaunchManager().getDebugTargets();
 		try{
 			IMarker m =lineBreakpoint.getMarker();
 			if(m!=null){
-				_bpr.addBreakPointMarker(lineBreakpoint,mode);
+				_bpr.addBreakPoint(lineBreakpoint);
 			}
-			//System.out.print(lineBreakpoint.getLineNumber());
 			this.cont();
 		}
 		catch(Exception ex){
@@ -59,7 +57,7 @@ public class RecordMode extends AbstractMode {
 	}
 	
 	public void onTargetTerminated() {		
-		BreakpointManager.getInstance().diffResult(_bpr.getResultN(),_bpr.getResultR());
+		//BreakpointManager.getInstance().diffResult(_bpr.getResultN(),_bpr.getResultR());
 	}
 
 	@Override
