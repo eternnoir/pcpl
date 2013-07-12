@@ -46,8 +46,8 @@ public class VisualizerManager implements BreakPointListener{
 		return BreakpointManager.getInstance().getNormalSet();
 	}
 	
-	public ArrayList<ILineBreakpoint> getRecSet(){
-		return BreakpointManager.getInstance().getRecordSet();
+	public ArrayList<ILineBreakpoint> getInterestedSet(){
+		return BreakpointManager.getInstance().getInterestedSet();
 	}
 	public ArrayList<ILineBreakpoint> getResult(){
 		return BreakpointManager.getInstance().getResult();

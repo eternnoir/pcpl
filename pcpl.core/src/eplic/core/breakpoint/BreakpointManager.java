@@ -33,6 +33,7 @@ public class BreakpointManager {
 	private static BreakpointManager instance = null;
 	private ArrayList<ILineBreakpoint> _result;
 	private Map<IBreakpoint,IResource> _breakpointMap;
+	private IBreakpointSetter _bpSetter;
 	public static BreakpointManager getInstance() {
 		if (instance == null) {
 			instance = new BreakpointManager();
@@ -43,6 +44,7 @@ public class BreakpointManager {
 	public BreakpointManager(){
 		_result = null;
 		_breakpointMap = new HashMap<IBreakpoint,IResource>();
+		_bpSetter = new JavaBreakpointSetter();	//just support java
 	}
 	/**
 	 * 比較兩個breakpoint set, 第一個代入的是normal set，第二個為IS
@@ -145,7 +147,7 @@ public class BreakpointManager {
 		}
 	    ArrayList<Integer> lineNumbers = checkFunctionNameLineNumber(lines);
 	    for(int i : lineNumbers){
-	    	BreakpointSetter.getInstance().setBreakpoint(r, i);
+	    	_bpSetter.setBreakpoint(r, i);
 	    }
 	    
 	}
