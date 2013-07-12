@@ -30,6 +30,7 @@ public class NormalMode extends AbstractMode {
 			IMarker m =lineBreakpoint.getMarker();
 			if(m!=null)
 			_bpr.addBreakPoint(lineBreakpoint);
+			lineBreakpoint.setEnabled(false); 			//for performance
 			this.cont();
 		}
 		catch(Exception ex){
