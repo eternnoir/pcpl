@@ -184,7 +184,7 @@ public class BreakpointManager {
 	 * @see EventCenter
 	 * @return
 	 */
-	public ArrayList<ILineBreakpoint> getRecordSet(){
+	public ArrayList<ILineBreakpoint> getInterestedSet(){
 		return EventCenter.getInstance().getRecMode().getBreakPointRecorder().getBPS();
 	}
 	
