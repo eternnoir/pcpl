@@ -4,8 +4,10 @@ package eplic.simplevisualizer.views;
 import java.awt.Frame;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
+
 import eplic.core.visualization.*;
 import eplic.core.eventHandler.*;
+
 import org.jgraph.*;
 import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.DefaultEdge;
@@ -15,24 +17,25 @@ import org.jgrapht.ListenableGraph;
 import org.jgrapht.ext.JGraphModelAdapter;
 import org.jgrapht.graph.ListenableDirectedGraph;
 import org.eclipse.debug.core.DebugException;
+import org.eclipse.debug.core.model.Breakpoint;
 import org.eclipse.debug.core.model.IBreakpoint;
 import org.eclipse.debug.core.model.ILineBreakpoint;
 import org.eclipse.debug.core.model.IStackFrame;
 import org.eclipse.debug.core.model.IVariable;
+import org.eclipse.debug.internal.core.BreakpointManager;
 import org.eclipse.jdt.internal.debug.core.model.JDIStackFrame;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.awt.SWT_AWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.ViewPart;
 
-public class BasicView extends ViewPart implements IVisualizer
-						, BreakPointListener{
+public class BasicView extends ViewPart implements IVisualizer{
 	private JGraphModelAdapter m_jgAdapter;
 	private ListenableGraph g;
 	private JGraph graph;
 	private IStackFrame[] _stacks;
 	private ArrayList<Object> _graphObjectList;
-	private IBreakpoint _susBP;
+	private ILineBreakpoint _susBP;
 	private int _nodeNumber;
 	private String _name = null;
 	private String _id = null;
@@ -44,7 +47,7 @@ public class BasicView extends ViewPart implements IVisualizer
 		_id = "pcpl.simpleVisualizer.BasicView";
 		_nodeNumber = 5;
 		_graphObjectList = new ArrayList<Object>();
-		EventCenter.getInstance().addBreakPointListener(this);
+		VisualizerManager.getInstance().addVisualizer(this);
 	}
 	@Override
 	public void createPartControl(Composite parent) {
@@ -78,7 +81,7 @@ public class BasicView extends ViewPart implements IVisualizer
 	public void onBreakPointTriggered(IVariable[] variables,
 			IBreakpoint breakpoint,IStackFrame[] stacks) {
 		_stacks = stacks;
-		_susBP = breakpoint;
+		_susBP = (ILineBreakpoint) breakpoint;
 		if(EventCenter.getInstance().getModeType() == 3){
 			this.update();
 		}
@@ -117,12 +120,11 @@ public class BasicView extends ViewPart implements IVisualizer
 	}
 	
 	private void setPosStackFrame(int num){
-		ArrayList<ILineBreakpoint> _bpsmN= VisualizerManager.getInstance().getNorSet();
-		ArrayList<ILineBreakpoint> _bpsmR = VisualizerManager.getInstance().getRecSet();
+		ArrayList<ILineBreakpoint> _bpsmR = VisualizerManager.getInstance().getResult();
 		int index = _bpsmR.indexOf((ILineBreakpoint)_susBP);
-		for(int i = index ;i<index+num && i<_bpsmN.size();i++){
+		for(int i = index ;i<index+num && i<_bpsmR.size();i++){
 			String _strClassName =FileParaviserUtils.getClassName( 
-					VisualizerManager.getInstance().getResourceByBreakpoint(_bpsmN.get(i)));
+					VisualizerManager.getInstance().getResourceByBreakpoint(_bpsmR.get(i)));
 			String[] _strClassNameList = FileParaviserUtils.splitClassName(_strClassName); 
 			if(!g.containsVertex(_strClassNameList[_strClassNameList.length-1])){
 				_graphObjectList.add(_strClassNameList[_strClassNameList.length-1]);
