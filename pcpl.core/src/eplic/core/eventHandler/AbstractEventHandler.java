@@ -13,6 +13,8 @@ import org.eclipse.debug.core.model.IDebugTarget;
  * EPLIC - A Tool to Assist Locating Interested Code.
  * Copyright (C) 2013 Frank Wang <eternnoir@gmail.com>
  * 
+ * This file is part of EPLIC.
+ * 
  * this class define events about eclipse,like breakpoint TargetTerminate TargetCreated
  * 
  * 

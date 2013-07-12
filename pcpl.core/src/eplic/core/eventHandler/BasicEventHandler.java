@@ -16,6 +16,8 @@ import org.eclipse.debug.core.model.IVariable;
  * EPLIC - A Tool to Assist Locating Interested Code.
  * Copyright (C) 2013 Frank Wang <eternnoir@gmail.com>
  * 
+ * This file is part of EPLIC.
+ * 
  * 
  * @author FrankWang
  *

@@ -5,7 +5,15 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.debug.core.DebugPlugin;
 import org.eclipse.debug.core.model.IBreakpoint;
 import org.eclipse.jdt.debug.core.JDIDebugModel;
-
+/**
+ * EPLIC - A Tool to Assist Locating Interested Code.
+ * Copyright (C) 2013 Frank Wang <eternnoir@gmail.com>
+ * 
+ * This file is part of EPLIC.
+ * 
+ * @author FrankWang
+ *
+ */
 public class BreakpointSetter {
 	private static BreakpointSetter instance = null;
 	public static BreakpointSetter getInstance() {
