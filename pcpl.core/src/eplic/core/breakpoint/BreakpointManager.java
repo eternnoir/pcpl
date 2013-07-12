@@ -23,6 +23,9 @@ import eplic.core.eventHandler.EventCenter;
  * 
  * This file is part of EPLIC.
  * 
+ * 這個Class 負責管理所有跟breakpoint有關的操作，像是新增breakpoint
+ * 禁用所有breakpoint等
+ * 
  * @author FrankWang
  *
  */
@@ -41,6 +44,14 @@ public class BreakpointManager {
 		_result = null;
 		_breakpointMap = new HashMap<IBreakpoint,IResource>();
 	}
+	/**
+	 * 比較兩個breakpoint set, 第一個代入的是normal set，第二個為IS
+	 * 會將IS中含有NS的breakpoint給去掉
+	 * 
+	 * @param nor
+	 * @param rec
+	 * @return result set
+	 */
 	public ArrayList<ILineBreakpoint> diffResult(ArrayList<ILineBreakpoint> nor,ArrayList<ILineBreakpoint> rec){
 		for(ILineBreakpoint nm : nor){
 			while(rec.indexOf(nm)!= -1){
@@ -53,12 +64,18 @@ public class BreakpointManager {
 		}
 		return _result;
 	}
+	/**
+	 * get result set
+	 * @return
+	 */
 	
 	public ArrayList<ILineBreakpoint> getResult(){
 		assert(_result != null);
 		return _result;
 	}
-	
+	/**
+	 * disable all breakpoint in project
+	 */
 	public void disableAllBreakpoint(){
 		IBreakpoint[] b = DebugPlugin.getDefault().getBreakpointManager().getBreakpoints();
 		for(IBreakpoint _b : b){
@@ -70,6 +87,9 @@ public class BreakpointManager {
 			}
 		}
 	}
+	/**
+	 * remove all breakpoint 
+	 */
 	public void removeAllBreakpoint(){
 		IBreakpoint[] b = DebugPlugin.getDefault().getBreakpointManager().getBreakpoints();
 		try {
@@ -79,7 +99,9 @@ public class BreakpointManager {
 			e.printStackTrace();
 		}
 	}
-	
+	/**
+	 * set result set's breakpoint
+	 */
 	public void setResult(){
 		for(ILineBreakpoint b : _result){
 			try {
@@ -90,14 +112,21 @@ public class BreakpointManager {
 			}
 		}
 	}
-	
+	/**
+	 * 將所有函式開頭都插入中斷點
+	 */
 	public void setAllBreakpoint(){
+		// for now, just support java
 		ArrayList<IResource> resourceList =  FileParaviserUtils.getAllFilesInProject("java");
 		for(IResource r : resourceList){
 			setBreakpointByResource(r);
 		}
 	}
-	
+	/**
+	 * 將傳入的iresource所有函式的開頭插入中斷點
+	 * 
+	 * @param r
+	 */
 	public void setBreakpointByResource(IResource r){
 		IFile f = ResourcesPlugin.getWorkspace().getRoot().getFileForLocation(r.getLocation());
 	    String strings;
@@ -120,20 +149,41 @@ public class BreakpointManager {
 	    }
 	    
 	}
-	
+	/**
+	 * create a map between breakpoint and resource
+	 * 純粹只是為了方便從breakpoint找到他在哪個檔案
+	 * 
+	 * @param b
+	 * @param r
+	 */
 	public void addBreakpointSet(IBreakpoint b, IResource r){
 		_breakpointMap.put(b, r);
 	}
-	
+	/**
+	 * get iresource by breakpoint
+	 * @param b
+	 * @return
+	 */
 	public IResource getResourceByBreakpoint(IBreakpoint b){
 		IResource ret = null;
 		ret = _breakpointMap.get(b);
 		return ret;
 	}
-	
+	/**
+	 * get Normal set, it will ask eventcenter for normal set
+	 * 
+	 * @see EventCenter
+	 * @return
+	 */
 	public ArrayList<ILineBreakpoint> getNormalSet(){
 		return EventCenter.getInstance().getNorMode().getBreakPointRecorder().getBPS();
 	}
+	/**
+	 * get Interested  set, it will ask eventcenter for Interested  set
+	 * 
+	 * @see EventCenter
+	 * @return
+	 */
 	public ArrayList<ILineBreakpoint> getRecordSet(){
 		return EventCenter.getInstance().getRecMode().getBreakPointRecorder().getBPS();
 	}
