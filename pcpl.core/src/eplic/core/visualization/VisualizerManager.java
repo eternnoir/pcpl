@@ -6,10 +6,14 @@ import java.util.List;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.debug.core.model.IBreakpoint;
 import org.eclipse.debug.core.model.ILineBreakpoint;
+import org.eclipse.debug.core.model.IStackFrame;
+import org.eclipse.debug.core.model.IVariable;
 
 import eplic.core.breakpoint.BreakpointManager;
+import eplic.core.eventHandler.BreakPointListener;
+import eplic.core.eventHandler.EventCenter;
 
-public class VisualizerManager {
+public class VisualizerManager implements BreakPointListener{
 	private static VisualizerManager instance = null;
 	 List<IVisualizer> _visualizerList = new ArrayList<IVisualizer>();
 	public static VisualizerManager getInstance() {
@@ -20,6 +24,7 @@ public class VisualizerManager {
 	}
 	
 	public VisualizerManager(){
+		EventCenter.getInstance().addBreakPointListener(this);
 	}
 	public void addVisualizer(IVisualizer vl){
 		_visualizerList.add(vl);
@@ -35,8 +40,20 @@ public class VisualizerManager {
 	public ArrayList<ILineBreakpoint> getRecSet(){
 		return BreakpointManager.getInstance().getRecordSet();
 	}
+	public ArrayList<ILineBreakpoint> getResult(){
+		return BreakpointManager.getInstance().getResult();
+	}
 	
 	public IResource getResourceByBreakpoint(IBreakpoint b){
 		return BreakpointManager.getInstance().getResourceByBreakpoint(b);
+	}
+
+	@Override
+	public void onBreakPointTriggered(IVariable[] variables,
+			IBreakpoint breakpoint, IStackFrame[] stacks) {
+		for(IVisualizer _iv: _visualizerList){
+			_iv.onBreakPointTriggered(variables, breakpoint, stacks);
+		}
+		
 	}
 }
