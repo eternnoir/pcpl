@@ -35,7 +35,7 @@ import eplic.core.eventHandler.TargetTerminationListener;
 import eplic.core.visualization.IVisualizer;
 import eplic.core.visualization.VisualizerManager;
 /**
- * 
+ * Trace Mode 當EPLIC分析完後使用推薦的中斷點進行trace時的mode
  * @author FrankWang
  *
  */
@@ -60,6 +60,7 @@ public class TraceMode extends AbstractMode implements BreakPointListener,
 
 	@Override
 	public void init() {
+		//set result 
 		BreakpointManager.getInstance().disableAllBreakpoint();
 		BreakpointManager.getInstance().setResult();
 	}

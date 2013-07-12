@@ -11,7 +11,7 @@ import org.eclipse.ui.handlers.HandlerUtil;
 import eplic.core.breakpoint.BreakpointManager;
 import eplic.core.eventHandler.EventCenter;
 import eplic.core.mode.NormalMode;
-import eplic.core.mode.RecordMode;
+import eplic.core.mode.InterestedMode;
 import eplic.core.mode.TraceMode;
 import eplic.core.ui.pcplDialog;
 
@@ -64,7 +64,7 @@ public class SampleHandler extends AbstractHandler {
 					window.getShell(),
 					"Core",
 					"Now, Do something you want to trace");
-			RecordMode rm = new RecordMode();
+			InterestedMode rm = new InterestedMode();
 			EventCenter.getInstance().setRecMode(rm);
 			System.out.print("change Mode Type 2\n");
 		}

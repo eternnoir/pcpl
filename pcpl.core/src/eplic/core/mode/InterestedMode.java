@@ -32,14 +32,16 @@ import eplic.core.breakpoint.BreakpointManager;
 import eplic.core.breakpoint.breakpointRecoder;
 import eplic.core.eventHandler.EventCenter;
 /**
+ * Interested Mode 紀錄使用者感興趣的操作 
+ * 
  * @author FrankWang
  *
  */
-public class RecordMode extends AbstractMode {
+public class InterestedMode extends AbstractMode {
 	private breakpointRecoder _bpr;	
 	private IDebugTarget[] _debugTargets = null;
 	
-	public RecordMode(){
+	public InterestedMode(){
 		_bpr = new breakpointRecoder();
 		_modeType = 2;
 	}

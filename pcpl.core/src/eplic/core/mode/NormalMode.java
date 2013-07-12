@@ -33,6 +33,8 @@ import eplic.core.breakpoint.BreakpointManager;
 import eplic.core.breakpoint.breakpointRecoder;
 import eplic.core.eventHandler.EventCenter;
 /**
+ * Normal Mode , EPLIC啟動後預設進入此mode
+ * 此mode紀錄使用者所操作不感興趣的行為
  * 
  * @author FrankWang
  *
@@ -75,7 +77,9 @@ public class NormalMode extends AbstractMode {
 		assert(_bpr != null);
 		return _bpr;
 	}
-	
+	/**
+	 * cont deubgger
+	 */
 	public void cont(){
 		for(IDebugTarget debugTarget : _debugTargets){
 			try {

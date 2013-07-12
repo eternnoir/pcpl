@@ -29,6 +29,7 @@ import eplic.core.eventHandler.BreakPointListener;
 import eplic.core.eventHandler.TargetCreationListener;
 import eplic.core.eventHandler.TargetTerminationListener;
 /**
+ * this is an abstract class for mode. 
  * 
  * @author FrankWang
  *
@@ -59,7 +60,10 @@ public abstract class AbstractMode implements BreakPointListener,
 	}
 	
 	abstract public void init();
-	
+	/**
+	 * get mode id
+	 * @return
+	 */
 	public int getMode(){
 		return _modeType;
 	}

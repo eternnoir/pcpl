@@ -32,7 +32,7 @@ import eplic.core.breakpoint.BreakpointManager;
 import eplic.core.eventHandler.BreakPointListener;
 import eplic.core.eventHandler.EventCenter;
 /**
- * 
+ * Visualizer Manager 負責管理所有Visualizer, 實作的Visualizer必須向他進行註冊
  * @author FrankWang
  *
  */
@@ -49,24 +49,49 @@ public class VisualizerManager implements BreakPointListener{
 	public VisualizerManager(){
 		EventCenter.getInstance().addBreakPointListener(this);
 	}
+	/**
+	 * add Visualizer
+	 * @param vl
+	 */
 	public void addVisualizer(IVisualizer vl){
 		_visualizerList.add(vl);
 	}
+	/**
+	 * get Visualizer List
+	 * @return
+	 */
 	public List<IVisualizer> getVisualizerList(){
 		return _visualizerList;
 	}
-	
+	/**
+	 * get Normal Set. from breakpoint manager
+	 * @see BreakpointManager
+	 * @return
+	 */
 	public ArrayList<ILineBreakpoint> getNorSet(){
 		return BreakpointManager.getInstance().getNormalSet();
 	}
-	
+	/**
+	 * get Interested Set. from breakpoint manager
+	 * @see BreakpointManager
+	 * @return
+	 */
 	public ArrayList<ILineBreakpoint> getInterestedSet(){
 		return BreakpointManager.getInstance().getInterestedSet();
 	}
+	/**
+	 * get Result Set. from breakpoint manager
+	 * @see BreakpointManager
+	 * @return
+	 */
 	public ArrayList<ILineBreakpoint> getResult(){
 		return BreakpointManager.getInstance().getResult();
 	}
-	
+	/**
+	 * get Resource By Breakpoint
+	 * @param b
+	 * @return
+	 */
 	public IResource getResourceByBreakpoint(IBreakpoint b){
 		return BreakpointManager.getInstance().getResourceByBreakpoint(b);
 	}

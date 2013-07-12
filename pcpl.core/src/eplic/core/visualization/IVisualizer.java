@@ -24,11 +24,21 @@ import org.eclipse.debug.core.model.IStackFrame;
 import org.eclipse.debug.core.model.IVariable;
 /**
  * 
+ * the interface for Visualizer
+ * 所有Visualizer必須實作這個interface
  * @author FrankWang
  *
  */
 public interface IVisualizer {
+	/**
+	 * get Visualizer Name
+	 * @return
+	 */
 	public String getVisualizerName();
+	/** 
+	 * get Visualizer ID
+	 * @return
+	 */
 	public String getVisualizerID();	
 	public void onBreakPointTriggered(IVariable[] variables,
 			IBreakpoint breakpoint,IStackFrame[] stacks);
