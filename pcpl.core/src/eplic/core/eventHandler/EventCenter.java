@@ -9,6 +9,7 @@ import eplic.core.mode.AbstractMode;
 import eplic.core.mode.NormalMode;
 import eplic.core.mode.RecordMode;
 import eplic.core.mode.TraceMode;
+import eplic.core.visualization.VisualizerManager;
 
 public class EventCenter {
 	private static EventCenter instance = null;
@@ -60,6 +61,7 @@ public class EventCenter {
 
 	public void removeAllBreakPointListener() {
 		handler.removeAllBreakPointListener();
+		handler.addBreakPointListener(VisualizerManager.getInstance());
 	}
 
 	public void removeAllTargetCreationListener() {
@@ -89,9 +91,9 @@ public class EventCenter {
 		this.removeAllBreakPointListener();
 		this.removeAllTargetTerminationListener();
 		_traceMode.init();
+		_currentMode = _traceMode;
 		this.addBreakPointListener(_traceMode);
 		this.addTargetTerminationListener(_traceMode);
-		_currentMode = _traceMode;
 	}
 	public AbstractMode getNorMode(){
 		return _normalMode;
