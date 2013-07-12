@@ -3,6 +3,7 @@ package eplic.core.eventHandler;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 import org.eclipse.debug.core.DebugEvent;
 import org.eclipse.debug.core.IDebugEventSetListener;
 import org.eclipse.debug.core.model.IDebugElement;
@@ -84,6 +85,20 @@ public abstract class AbstractEventHandler implements IDebugEventSetListener {
 	public void removeTargetTerminationListener(TargetTerminationListener l) {
 		this.terminationListeners.remove(l);
 	}
+	
+
+	public void removeAllBreakPointListener() {
+		this.bpListeners.clear();
+	}
+
+	public void removeAllTargetCreationListener() {
+		this.creationListeners.clear();
+	}
+
+	public void removeAllTargetTerminationListener() {
+		this.terminationListeners.clear();
+	}
+	
 
 
 
