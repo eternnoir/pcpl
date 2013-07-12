@@ -76,7 +76,7 @@ public class SampleHandler extends AbstractHandler {
 					"Core",
 					"Change to TraceMode");
 			TraceMode tm = new TraceMode();
-			EventCenter.getInstance().setRecMode(tm);
+			EventCenter.getInstance().setTraMode(tm);
 			System.out.print("change Mode Type 3\n");
 		}
 		else if(EventCenter.getInstance().getModeType() == 3){		//normal mode
