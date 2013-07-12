@@ -13,7 +13,10 @@ import eplic.core.visualization.VisualizerManager;
  * 
  * This file is part of EPLIC.
  * 
+ * EventCenter定義了所有EPLIC會用到的Event
+ * 擁有一個BasicEventHandler
  * 
+ * @see BasicEventHandler
  * @author FrankWang
  *
  */
@@ -32,48 +35,74 @@ public class EventCenter {
 		}
 		return instance;
 	}
-
+	/**
+	 * constructor
+	 */
 	private EventCenter() {
 		handler = new BasicEventHandler();
 		DebugPlugin.getDefault().addDebugEventListener(handler);
 		_modeList = new ArrayList<AbstractMode>();
 	}
-
+	/**
+	 * add BreakPointListener
+	 * @param listener
+	 */
 	public void addBreakPointListener(BreakPointListener listener) {
 		handler.addBreakPointListener(listener);
 	}
-
+	/**
+	 * add TargetTerminationListener
+	 * @param listener
+	 */
 	public void addTargetTerminationListener(TargetTerminationListener listener) {
 		handler.addTargetTerminationListener(listener);
 	}
-
+	/**
+	 * add TargetCreationListener
+	 * @param listener
+	 */
 	public void addTargetCreationListener(TargetCreationListener listener) {
 		handler.addTargetCreationListener(listener);
 	}
-
+	/**
+	 * remove BreakPointListener
+	 * @param listener
+	 */
 	public void removeBreakPointListener(BreakPointListener listener) {
 		handler.removeBreakPointListener(listener);
 	}
-
+	/**
+	 * remove TargetCreationListener
+	 * @param listener
+	 */
 	public void removeTargetCreationListener(TargetCreationListener listener) {
 		handler.removeTargetCreationListener(listener);
 	}
-
+	/**
+	 * remove TargetTerminationListene
+	 * @param listener
+	 */
 	public void removeTargetTerminationListener(
 			TargetTerminationListener listener) {
 		handler.removeTargetTerminationListener(listener);
 	}
 
-
+	/**
+	 * remove All BreakPointListene
+	 */
 	public void removeAllBreakPointListener() {
 		handler.removeAllBreakPointListener();
 		handler.addBreakPointListener(VisualizerManager.getInstance());
 	}
-
+	/**
+	 * remove All TargetCreationListener
+	 */
 	public void removeAllTargetCreationListener() {
 		handler.removeAllTargetCreationListener();
 	}
-
+	/**
+	 * remove All TargetTerminationListener
+	 */
 	public void removeAllTargetTerminationListener() {
 		handler.removeAllTargetTerminationListener();
 	}
