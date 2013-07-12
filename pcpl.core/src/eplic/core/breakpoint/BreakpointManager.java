@@ -15,6 +15,8 @@ import org.eclipse.debug.core.DebugPlugin;
 import org.eclipse.debug.core.model.IBreakpoint;
 import org.eclipse.debug.core.model.ILineBreakpoint;
 
+import eplic.core.eventHandler.EventCenter;
+
 public class BreakpointManager {
 	private static BreakpointManager instance = null;
 	private ArrayList<ILineBreakpoint> _result;
@@ -127,10 +129,10 @@ public class BreakpointManager {
 	}
 	
 	public ArrayList<ILineBreakpoint> getNormalSet(){
-		return _bpsmNS;
+		return EventCenter.getInstance().getNorMode().getBreakPointRecorder().getBPS();
 	}
 	public ArrayList<ILineBreakpoint> getRecordSet(){
-		return _bpsmIS;
+		return EventCenter.getInstance().getRecMode().getBreakPointRecorder().getBPS();
 	}
 	
 	public void reset(){
