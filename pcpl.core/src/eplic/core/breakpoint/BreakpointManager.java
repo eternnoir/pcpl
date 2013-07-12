@@ -187,10 +187,18 @@ public class BreakpointManager {
 	public ArrayList<ILineBreakpoint> getInterestedSet(){
 		return EventCenter.getInstance().getRecMode().getBreakPointRecorder().getBPS();
 	}
-	
+	/**
+	 * reset, it will remove all breakpoints which are ECPLIC set.
+	 */
 	public void reset(){
 		this.removeAllBreakpoint();
 	}
+	/**
+	 * 確認傳入的字串是不是一個函式
+	 * 
+	 * @param line
+	 * @return
+	 */
 	
 	private ArrayList<Integer> checkFunctionNameLineNumber(String[] line){
 		ArrayList<Integer> ret = new ArrayList<Integer>();
@@ -202,6 +210,11 @@ public class BreakpointManager {
 		
 		return ret;
 	}
+	/**
+	 * 確認傳入的字串是不是一個函式
+	 * @param s
+	 * @return
+	 */
 	
 	private boolean checkFunction(String s){
 		if((s.indexOf("public")>-1)||(s.indexOf("private")>-1)||(s.indexOf("protected")>-1)){	//判斷function
