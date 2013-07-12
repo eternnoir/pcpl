@@ -20,6 +20,8 @@ import eplic.core.eventHandler.EventCenter;
 public class BreakpointManager {
 	private static BreakpointManager instance = null;
 	private ArrayList<ILineBreakpoint> _result;
+	private ArrayList<ILineBreakpoint> _bpsmNS;
+	private ArrayList<ILineBreakpoint> _bpsmIS;
 	private Map<IBreakpoint,IResource> _breakpointMap;
 	public static BreakpointManager getInstance() {
 		if (instance == null) {
@@ -31,8 +33,12 @@ public class BreakpointManager {
 	public BreakpointManager(){
 		_result = null;
 		_breakpointMap = new HashMap<IBreakpoint,IResource>();
+		_bpsmNS = null;
+		_bpsmIS = null;
 	}
 	public ArrayList<ILineBreakpoint> diffResult(ArrayList<ILineBreakpoint> nor,ArrayList<ILineBreakpoint> rec){
+		_bpsmNS = nor;
+		_bpsmIS = rec;
 		for(ILineBreakpoint nm : nor){
 			while(rec.indexOf(nm)!= -1){
 				rec.remove(nm);
