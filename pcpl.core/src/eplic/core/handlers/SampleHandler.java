@@ -10,6 +10,8 @@ import org.eclipse.ui.handlers.HandlerUtil;
 
 import eplic.core.breakpoint.BreakpointManager;
 import eplic.core.eventHandler.EventCenter;
+import eplic.core.mode.NormalMode;
+import eplic.core.mode.RecordMode;
 import eplic.core.mode.TraceMode;
 import eplic.core.ui.pcplDialog;
 
@@ -51,7 +53,8 @@ public class SampleHandler extends AbstractHandler {
 					"EPLIC Plugin is started");
 			BreakpointManager.getInstance().removeAllBreakpoint();
 			BreakpointManager.getInstance().setAllBreakpoint();
-			EventCenter.getInstance().setModeType(1);
+			NormalMode nm = new NormalMode();
+			EventCenter.getInstance().setNorMode(nm);
 			System.out.print("BreakPoint Setup \n");
 			System.out.print("change Mode Type 1\n");
 		}
@@ -61,7 +64,8 @@ public class SampleHandler extends AbstractHandler {
 					window.getShell(),
 					"Core",
 					"Now, Do something you want to trace");
-			EventCenter.getInstance().setModeType(2);
+			RecordMode rm = new RecordMode();
+			EventCenter.getInstance().setRecMode(rm);
 			System.out.print("change Mode Type 2\n");
 		}
 		else if(EventCenter.getInstance().getModeType() == 2){//record mode
@@ -71,12 +75,17 @@ public class SampleHandler extends AbstractHandler {
 					window.getShell(),
 					"Core",
 					"Change to TraceMode");
-			EventCenter.getInstance().setModeType(3);
+			TraceMode tm = new TraceMode();
+			EventCenter.getInstance().setRecMode(tm);
 			System.out.print("change Mode Type 3\n");
 		}
 		else if(EventCenter.getInstance().getModeType() == 3){		//normal mode
-			EventCenter.getInstance().setModeType(1);
-			System.out.print("change Mode Type 1\n");
+			EventCenter.getInstance().reset();
+			IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
+			MessageDialog.openInformation(
+					window.getShell(),
+					"Core",
+					"EPLIC Reset");
 		}
 		else{	
 			System.err.print("mode error");
