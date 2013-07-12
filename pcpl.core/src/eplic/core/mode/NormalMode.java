@@ -10,6 +10,7 @@ import org.eclipse.debug.core.model.ILineBreakpoint;
 import org.eclipse.debug.core.model.IStackFrame;
 import org.eclipse.debug.core.model.IVariable;
 
+import eplic.core.breakpoint.BreakpointManager;
 import eplic.core.breakpoint.breakpointRecoder;
 import eplic.core.eventHandler.EventCenter;
 
@@ -37,7 +38,12 @@ public class NormalMode extends AbstractMode {
 	}
 	
 	public void onTargetTerminated() {
-		// TODO Auto-generated method stub
+		AbstractMode im = EventCenter.getInstance().getRecMode();
+		if(im == null){
+			System.err.print("Can't get instertedMode");
+			return;
+		}
+		BreakpointManager.getInstance().diffResult(im.getBreakPointRecorder().getBPS(),this._bpr.getBPS());
 
 	}
 	
