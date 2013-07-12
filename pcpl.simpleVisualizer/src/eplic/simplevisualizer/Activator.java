@@ -1,4 +1,4 @@
-package pcpl.simplevisualizer;
+package eplic.simplevisualizer;
 
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;

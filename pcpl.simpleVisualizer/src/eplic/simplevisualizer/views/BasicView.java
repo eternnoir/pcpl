@@ -1,11 +1,11 @@
-package pcpl.simplevisualizer.views;
+package eplic.simplevisualizer.views;
 
 
 import java.awt.Frame;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
-import pcpl.core.visualization.*;
-import pcpl.core.eventHandler.*;
+import eplic.core.visualization.*;
+import eplic.core.eventHandler.*;
 import org.jgraph.*;
 import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.DefaultEdge;

@@ -1,4 +1,4 @@
-package pcpl.simplevisualizer.views;
+package eplic.simplevisualizer.views;
 
 public class pcplNode {
 	 String className;

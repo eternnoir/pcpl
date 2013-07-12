@@ -1,11 +1,10 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: SimpleVisualizer
-Bundle-SymbolicName: pcpl.simpleVisualizer; singleton:=true
+Bundle-SymbolicName: eplic.simpleVisualizer;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: pcpl.simplevisualizer.Activator
-Require-Bundle: pcpl.core;bundle-version="1.0.0",
- org.eclipse.ui,
+Bundle-Activator: eplic.simplevisualizer.Activator
+Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.debug.core;bundle-version="3.7.100",
  org.eclipse.jdt;bundle-version="3.8.1",
@@ -34,4 +33,6 @@ Bundle-ClassPath: lib/jgraph.jar,
  lib/TGGraphLayout.jar,
  lib/xmlunit1.0.jar,
  lib/jgrapht-jdk1.6.jar
-Import-Package: org.eclipse.debug.core.model
+Import-Package: eplic.core.eventHandler,
+ eplic.core.visualization,
+ org.eclipse.debug.core.model

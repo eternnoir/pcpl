@@ -1,4 +1,4 @@
-package pcpl.simplevisualizer.actions;
+package eplic.simplevisualizer.actions;
 
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
