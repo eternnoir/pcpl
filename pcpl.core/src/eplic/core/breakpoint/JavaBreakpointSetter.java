@@ -11,6 +11,9 @@ import org.eclipse.jdt.debug.core.JDIDebugModel;
  * 
  * This file is part of EPLIC.
  * 
+ * Java breakpoint setter
+ * 
+ * @see IBreakpointSetter
  * @author FrankWang
  *
  */
@@ -20,6 +23,10 @@ public class JavaBreakpointSetter implements IBreakpointSetter {
 	public JavaBreakpointSetter(){
 
 	}
+	/**
+	 * set breakpoint at line number in file(resource)
+	 * 
+	 */
 	@Override
 	public void setBreakpoint(IResource resource,int lineNum){
 		String typeName = FileParaviserUtils.getClassName(resource);	//javabreakpoint need this

@@ -110,23 +110,25 @@ public abstract class AbstractEventHandler implements IDebugEventSetListener {
 	public void removeTargetTerminationListener(TargetTerminationListener l) {
 		this.terminationListeners.remove(l);
 	}
-	
-
+	/**
+	 * remove All BreakPoint Listener
+	 */
 	public void removeAllBreakPointListener() {
 		this.bpListeners.clear();
 	}
-
+	/**
+	 * remove All TargetCreation Listener
+	 */
 	public void removeAllTargetCreationListener() {
 		this.creationListeners.clear();
 	}
-
+	/**
+	 * remove All TargetTermination Listener
+	 */
 	public void removeAllTargetTerminationListener() {
 		this.terminationListeners.clear();
 	}
 	
-
-
-
 	protected abstract boolean handleBreakpointEvent(IDebugElement dElement) ;
 
 	protected abstract boolean handleTargetCreatedEvent(IDebugElement dElement);

@@ -18,6 +18,7 @@ import org.eclipse.debug.core.model.IVariable;
  * 
  * This file is part of EPLIC.
  * 
+ * A basic event handler.實作了一些EPLIC會用到的event
  * 
  * @author FrankWang
  *
