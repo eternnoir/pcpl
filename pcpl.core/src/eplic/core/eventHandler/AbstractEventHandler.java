@@ -9,6 +9,14 @@ import org.eclipse.debug.core.IDebugEventSetListener;
 import org.eclipse.debug.core.model.IDebugElement;
 import org.eclipse.debug.core.model.IDebugTarget;
 
+/**
+ * this class define events about eclipse,like breakpoint TargetTerminate TargetCreated
+ * 
+ * 
+ * @see BasicEventHandler
+ * @author frankwang(eternnoir)
+ *
+ */
 
 public abstract class AbstractEventHandler implements IDebugEventSetListener {
 
@@ -25,23 +33,26 @@ public abstract class AbstractEventHandler implements IDebugEventSetListener {
 				.synchronizedList(new ArrayList<TargetCreationListener>());
 
 	}
-
+	/**
+	 * add breakpoint listener to bpListeners
+	 * @param listener
+	 */
 	public void addBreakPointListener(BreakPointListener listener) {
 		this.bpListeners.add(listener);
 	}
-
+	/**
+	 * add TargetCreationListener
+	 * @param l
+	 */
 	public void addTargetCreationListener(TargetCreationListener l) {
 		this.creationListeners.add(l);
 	}
-
+	/**
+	 * add TerminationListener
+	 * @param l
+	 */
 	public void addTargetTerminationListener(TargetTerminationListener l) {
 		this.terminationListeners.add(l);
-	}
-	public void clearAllBreakpointListener(){
-		this.bpListeners.clear();
-	}
-	public void clearTargetTerminationListener(){
-		this.terminationListeners.clear();
 	}
 
 	@Override
@@ -73,15 +84,24 @@ public abstract class AbstractEventHandler implements IDebugEventSetListener {
 			}
 		}
 	}
-
+	/**
+	 * remove BreakPointListener from event handler
+	 * @param listener
+	 */
 	public void removeBreakPointListener(BreakPointListener listener) {
 		this.bpListeners.remove(listener);
 	}
-
+	/**
+	 * remove TargetCreationListener form event handler
+	 * @param l
+	 */
 	public void removeTargetCreationListener(TargetCreationListener l) {
 		this.creationListeners.remove(l);
 	}
-
+	/**
+	 * remove TargetTerminationListener from event handler
+	 * @param l
+	 */
 	public void removeTargetTerminationListener(TargetTerminationListener l) {
 		this.terminationListeners.remove(l);
 	}
