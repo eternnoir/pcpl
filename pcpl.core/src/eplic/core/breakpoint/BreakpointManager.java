@@ -17,6 +17,14 @@ import org.eclipse.debug.core.model.ILineBreakpoint;
 
 import eplic.core.eventHandler.EventCenter;
 
+/**
+ * EPLIC - A Tool to Assist Locating Interested Code.
+ * Copyright (C) 2013 Frank Wang <eternnoir@gmail.com>
+ * 
+ * 
+ * @author FrankWang
+ *
+ */
 public class BreakpointManager {
 	private static BreakpointManager instance = null;
 	private ArrayList<ILineBreakpoint> _result;

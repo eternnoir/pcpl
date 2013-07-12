@@ -12,7 +12,14 @@ import org.eclipse.debug.core.model.IVariable;
 
 
 
-
+/**
+ * EPLIC - A Tool to Assist Locating Interested Code.
+ * Copyright (C) 2013 Frank Wang <eternnoir@gmail.com>
+ * 
+ * 
+ * @author FrankWang
+ *
+ */
 
 public class BasicEventHandler extends AbstractEventHandler {
 

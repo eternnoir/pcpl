@@ -15,7 +15,16 @@ import eplic.core.eventHandler.TargetCreationListener;
 import eplic.core.eventHandler.TargetTerminationListener;
 import eplic.core.visualization.IVisualizer;
 import eplic.core.visualization.VisualizerManager;
-
+/**
+ * EPLIC - A Tool to Assist Locating Interested Code.
+ * Copyright (C) 2013 Frank Wang <eternnoir@gmail.com>
+ * 
+ * This file is part of EPLIC.
+ * 
+ * 
+ * @author FrankWang
+ *
+ */
 public class TraceMode extends AbstractMode implements BreakPointListener,
 		TargetCreationListener, TargetTerminationListener {
 	private IDebugTarget[] _debugTargets = null;

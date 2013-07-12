@@ -11,7 +11,14 @@ import org.eclipse.debug.core.DebugException;
 import org.eclipse.debug.core.model.IBreakpoint;
 import org.eclipse.jdt.internal.debug.core.breakpoints.JavaLineBreakpoint;
 
-
+/**
+ * EPLIC - A Tool to Assist Locating Interested Code.
+ * Copyright (C) 2013 Frank Wang <eternnoir@gmail.com>
+ * 
+ * 
+ * @author FrankWang
+ *
+ */
 
 public class pcplBreakpoint extends JavaLineBreakpoint {
 

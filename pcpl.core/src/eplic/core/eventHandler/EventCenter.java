@@ -10,7 +10,16 @@ import eplic.core.mode.NormalMode;
 import eplic.core.mode.RecordMode;
 import eplic.core.mode.TraceMode;
 import eplic.core.visualization.VisualizerManager;
-
+/**
+ * EPLIC - A Tool to Assist Locating Interested Code.
+ * Copyright (C) 2013 Frank Wang <eternnoir@gmail.com>
+ * 
+ * This file is part of EPLIC.
+ * 
+ * 
+ * @author FrankWang
+ *
+ */
 public class EventCenter {
 	private static EventCenter instance = null;
 	private AbstractEventHandler handler;

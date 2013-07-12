@@ -9,7 +9,16 @@ import eplic.core.breakpoint.breakpointRecoder;
 import eplic.core.eventHandler.BreakPointListener;
 import eplic.core.eventHandler.TargetCreationListener;
 import eplic.core.eventHandler.TargetTerminationListener;
-
+/**
+ * EPLIC - A Tool to Assist Locating Interested Code.
+ * Copyright (C) 2013 Frank Wang <eternnoir@gmail.com>
+ * 
+ * This file is part of EPLIC.
+ * 
+ * 
+ * @author FrankWang
+ *
+ */
 public abstract class AbstractMode implements BreakPointListener,
 		TargetCreationListener, TargetTerminationListener {
 
