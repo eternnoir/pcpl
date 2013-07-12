@@ -6,9 +6,6 @@ import java.util.List;
 import org.eclipse.debug.core.DebugPlugin;
 
 import eplic.core.mode.AbstractMode;
-import eplic.core.mode.NormalMode;
-import eplic.core.mode.RecordMode;
-import eplic.core.mode.TraceMode;
 import eplic.core.visualization.VisualizerManager;
 /**
  * EPLIC - A Tool to Assist Locating Interested Code.
@@ -80,8 +77,6 @@ public class EventCenter {
 	public void removeAllTargetTerminationListener() {
 		handler.removeAllTargetTerminationListener();
 	}
-	
-	
 	
 	public void setNorMode(AbstractMode m){
 		_normalMode = m;
