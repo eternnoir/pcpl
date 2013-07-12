@@ -133,6 +133,10 @@ public class BreakpointManager {
 		return _bpsmIS;
 	}
 	
+	public void reset(){
+		this.removeAllBreakpoint();
+	}
+	
 	private ArrayList<Integer> checkFunctionNameLineNumber(String[] line){
 		ArrayList<Integer> ret = new ArrayList<Integer>();
 		for(int i = 0;i < line.length;i++){

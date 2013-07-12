@@ -81,6 +81,7 @@ public class SampleHandler extends AbstractHandler {
 		}
 		else if(EventCenter.getInstance().getModeType() == 3){		//normal mode
 			EventCenter.getInstance().reset();
+			BreakpointManager.getInstance().reset();
 			IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
 			MessageDialog.openInformation(
 					window.getShell(),
