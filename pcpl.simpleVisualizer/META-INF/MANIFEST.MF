@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: SimpleVisualizer
 Bundle-SymbolicName: eplic.simpleVisualizer;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 0.1.0.qualifier
 Bundle-Activator: eplic.simplevisualizer.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
