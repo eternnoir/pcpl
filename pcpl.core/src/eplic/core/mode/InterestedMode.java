@@ -86,8 +86,8 @@ public class InterestedMode extends AbstractMode {
 			System.err.print("Can't get normalMode");
 			return;
 		}
-		BreakpointManager.getInstance().diffResult(this._bpr.getBPS()
-				,nm.getBreakPointRecorder().getBPS());
+		BreakpointManager.getInstance().diffResult(nm.getBreakPointRecorder().getBPS()
+				,this._bpr.getBPS());
 	}
 
 	@Override
