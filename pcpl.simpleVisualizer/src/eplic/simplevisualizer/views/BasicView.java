@@ -1,3 +1,22 @@
+/**
+ * EPLIC - A Tool to Assist Locating Interested Code.
+ * Copyright (C) 2013 Frank Wang <eternnoir@gmail.com>
+ * 
+ * This file is part of EPLIC.
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 package eplic.simplevisualizer.views;
 
 
@@ -28,7 +47,12 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.awt.SWT_AWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.ViewPart;
-
+/**
+ * 一個基本的用JGraphT實作的Call Graph
+ * 
+ * @author frankwang
+ *
+ */
 public class BasicView extends ViewPart implements IVisualizer{
 	private JGraphModelAdapter m_jgAdapter;
 	private ListenableGraph g;
@@ -86,7 +110,9 @@ public class BasicView extends ViewPart implements IVisualizer{
 			this.update();
 		}
 	}
-	
+	/**
+	 * 更新call graph
+	 */
 	private void update(){
 		this.clearGraph();
 		this.setPreStackFrame(_nodeNumber);
@@ -96,12 +122,18 @@ public class BasicView extends ViewPart implements IVisualizer{
 	private void init(){
 
 	}
-	
+	/**
+	 * 清除call graph
+	 */
 	private void clearGraph(){
 		g.removeAllVertices(_graphObjectList);
 		graph.removeAll();
 		_graphObjectList = new ArrayList<Object>();
 	}
+	/**
+	 * 設定所有在目前狀態下的Call Stack
+	 * @param num
+	 */
 	private void setPreStackFrame(int num){
 		try{
 			// set before stackframe
@@ -118,7 +150,10 @@ public class BasicView extends ViewPart implements IVisualizer{
 			e.printStackTrace();
 		}
 	}
-	
+	/**
+	 * 設定未來會呼叫哪些函式的call graph
+	 * @param num
+	 */
 	private void setPosStackFrame(int num){
 		ArrayList<ILineBreakpoint> _bpsmR = VisualizerManager.getInstance().getResult();
 		int index = _bpsmR.indexOf((ILineBreakpoint)_susBP);
@@ -132,7 +167,12 @@ public class BasicView extends ViewPart implements IVisualizer{
 			}
 		}
 	}
-	
+	/**
+	 * 設定每個node的位置
+	 * @param vertex
+	 * @param x
+	 * @param y
+	 */
 	private void positionVertexAt( Object vertex, int x, int y ) {
 		DefaultGraphCell cell = m_jgAdapter.getVertexCell(vertex);
         AttributeMap attr = cell.getAttributes();
@@ -147,6 +187,9 @@ public class BasicView extends ViewPart implements IVisualizer{
         cellAttr.put(cell, attr);
         m_jgAdapter.edit(cellAttr, null, null, null);
 	}
+	/**
+	 * 排位置
+	 */
 	private void arrange(){
 		int x = 200;
 		for(int i=0;i<_graphObjectList.size();i++){
