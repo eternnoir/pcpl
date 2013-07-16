@@ -33,7 +33,6 @@ import org.eclipse.jdt.debug.core.JDIDebugModel;
  *
  */
 public class JavaBreakpointSetter implements IBreakpointSetter {
-	private static JavaBreakpointSetter instance = null;
 
 	public JavaBreakpointSetter(){
 
