@@ -25,6 +25,7 @@ import java.util.List;
 import org.eclipse.debug.core.DebugPlugin;
 
 import eplic.core.mode.AbstractMode;
+import eplic.core.mode.NormalMode;
 import eplic.core.visualization.VisualizerManager;
 /**
  * 
@@ -152,6 +153,14 @@ public class EventCenter {
 	public List<AbstractMode> getModeList(){
 		assert(_modeList != null);
 		return _modeList;
+	}
+	public void switchMode(){
+		if(_currentMode == null){
+			this.setNorMode(new NormalMode());
+		}
+		else{
+			_currentMode.switchMode();
+		}
 	}
 
 	public int getModeType() {
