@@ -41,7 +41,7 @@ public class EventCenter {
 	private AbstractEventHandler handler;
 	private AbstractMode  _currentMode;
 	private AbstractMode  _normalMode;
-	private AbstractMode  _recordMode;
+	private AbstractMode  _interestedMode;
 	private AbstractMode  _traceMode;
 	private List<AbstractMode> _modeList;
 	
@@ -129,11 +129,11 @@ public class EventCenter {
 		_currentMode = _normalMode;
 	}
 	public void setRecMode(AbstractMode m){
-		_recordMode = m;
+		_interestedMode = m;
 		this.removeAllBreakPointListener();
-		this.addBreakPointListener(_recordMode);
-		this.addTargetTerminationListener(_recordMode);
-		_currentMode = _recordMode;
+		this.addBreakPointListener(_interestedMode);
+		this.addTargetTerminationListener(_interestedMode);
+		_currentMode = _interestedMode;
 	}
 	public void setTraMode(AbstractMode m){
 		_traceMode = m;
@@ -148,7 +148,7 @@ public class EventCenter {
 		return _normalMode;
 	}
 	public AbstractMode getInsMode(){
-		return _recordMode;
+		return _interestedMode;
 	}
 	public List<AbstractMode> getModeList(){
 		assert(_modeList != null);
