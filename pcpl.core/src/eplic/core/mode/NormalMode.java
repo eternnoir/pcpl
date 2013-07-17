@@ -64,12 +64,13 @@ public class NormalMode extends AbstractMode {
 	}
 	
 	public void onTargetTerminated() {
-		AbstractMode im = EventCenter.getInstance().getRecMode();
+		AbstractMode im = EventCenter.getInstance().getInsMode();
 		if(im == null){
 			System.err.print("Can't get instertedMode");
 			return;
 		}
-		BreakpointManager.getInstance().diffResult(im.getBreakPointRecorder().getBPS(),this._bpr.getBPS());
+		BreakpointManager.getInstance().diffResult(this._bpr.getBPS(),im.getBreakPointRecorder().getBPS());
+		EventCenter.getInstance().setAna(true);
 
 	}
 	
@@ -78,7 +79,7 @@ public class NormalMode extends AbstractMode {
 		return _bpr;
 	}
 	/**
-	 * cont deubgger
+	 * cont debugger
 	 */
 	public void cont(){
 		for(IDebugTarget debugTarget : _debugTargets){
@@ -97,6 +98,22 @@ public class NormalMode extends AbstractMode {
 	public void init() {
 		// TODO Auto-generated method stub
 		
+	}
+	@Override
+	public String switchMode() {
+		if(EventCenter.getInstance().getAna()){
+			TraceMode tm = new TraceMode();
+			EventCenter.getInstance().setTraMode(tm);
+			return "Trace Mode";
+		}
+		AbstractMode im = EventCenter.getInstance().getInsMode();
+		if(im==null){
+			EventCenter.getInstance().setIntMode(new InterestedMode());
+		}
+		else{
+			EventCenter.getInstance().setCurrentMode(im);
+		}
+		return "Interested Mode";
 	}
 	
 }

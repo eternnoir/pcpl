@@ -45,6 +45,7 @@ public class SampleHandler extends AbstractHandler {
 				"Hello, Eclipse world");*/
 		//_dialog.setInput(EventCenter.getInstance().getModeList());
 		//_dialog.run();
+		/*
 		if(EventCenter.getInstance().getModeType() == 0){		//normal mode
 			IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
 			MessageDialog.openInformation(
@@ -91,6 +92,13 @@ public class SampleHandler extends AbstractHandler {
 		else{	
 			System.err.print("mode error");
 		}
+		*/
+		String res = EventCenter.getInstance().switchMode();
+		IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
+		MessageDialog.openInformation(
+				window.getShell(),
+				"Core",
+				"Mode Switch to "+ res);
 
 		return null;
 	}
