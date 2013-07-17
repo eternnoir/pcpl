@@ -64,7 +64,7 @@ public class NormalMode extends AbstractMode {
 	}
 	
 	public void onTargetTerminated() {
-		AbstractMode im = EventCenter.getInstance().getRecMode();
+		AbstractMode im = EventCenter.getInstance().getInsMode();
 		if(im == null){
 			System.err.print("Can't get instertedMode");
 			return;
@@ -100,7 +100,12 @@ public class NormalMode extends AbstractMode {
 	}
 	@Override
 	public void switchMode() {
-		// TODO Auto-generated method stub
+		if(EventCenter.getInstance().getInsMode()==null){
+			
+		}
+		else{
+			
+		}
 		
 	}
 	

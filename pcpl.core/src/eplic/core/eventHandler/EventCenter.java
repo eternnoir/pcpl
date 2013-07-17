@@ -147,7 +147,7 @@ public class EventCenter {
 	public AbstractMode getNorMode(){
 		return _normalMode;
 	}
-	public AbstractMode getRecMode(){
+	public AbstractMode getInsMode(){
 		return _recordMode;
 	}
 	public List<AbstractMode> getModeList(){
