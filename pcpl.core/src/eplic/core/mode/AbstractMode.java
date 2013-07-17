@@ -60,6 +60,7 @@ public abstract class AbstractMode implements BreakPointListener,
 	}
 	
 	abstract public void init();
+	abstract public void switchMode();
 	/**
 	 * get mode id
 	 * @return

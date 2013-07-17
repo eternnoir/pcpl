@@ -95,6 +95,12 @@ public class InterestedMode extends AbstractMode {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void switchMode() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 }
