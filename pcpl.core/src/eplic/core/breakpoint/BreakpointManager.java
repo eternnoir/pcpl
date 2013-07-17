@@ -201,7 +201,7 @@ public class BreakpointManager {
 	 * @return
 	 */
 	public ArrayList<ILineBreakpoint> getInterestedSet(){
-		return EventCenter.getInstance().getRecMode().getBreakPointRecorder().getBPS();
+		return EventCenter.getInstance().getInsMode().getBreakPointRecorder().getBPS();
 	}
 	/**
 	 * reset, it will remove all breakpoints which are ECPLIC set.

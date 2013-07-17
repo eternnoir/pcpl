@@ -24,7 +24,9 @@ import java.util.List;
 
 import org.eclipse.debug.core.DebugPlugin;
 
+import eplic.core.breakpoint.BreakpointManager;
 import eplic.core.mode.AbstractMode;
+import eplic.core.mode.NormalMode;
 import eplic.core.visualization.VisualizerManager;
 /**
  * 
@@ -40,8 +42,9 @@ public class EventCenter {
 	private AbstractEventHandler handler;
 	private AbstractMode  _currentMode;
 	private AbstractMode  _normalMode;
-	private AbstractMode  _recordMode;
+	private AbstractMode  _interestedMode;
 	private AbstractMode  _traceMode;
+	private boolean _isAna;
 	private List<AbstractMode> _modeList;
 	
 	public static EventCenter getInstance() {
@@ -127,12 +130,12 @@ public class EventCenter {
 		this.addBreakPointListener(_normalMode);
 		_currentMode = _normalMode;
 	}
-	public void setRecMode(AbstractMode m){
-		_recordMode = m;
+	public void setIntMode(AbstractMode m){
+		_interestedMode = m;
 		this.removeAllBreakPointListener();
-		this.addBreakPointListener(_recordMode);
-		this.addTargetTerminationListener(_recordMode);
-		_currentMode = _recordMode;
+		this.addBreakPointListener(_interestedMode);
+		this.addTargetTerminationListener(_interestedMode);
+		_currentMode = _interestedMode;
 	}
 	public void setTraMode(AbstractMode m){
 		_traceMode = m;
@@ -143,15 +146,29 @@ public class EventCenter {
 		this.addBreakPointListener(_traceMode);
 		this.addTargetTerminationListener(_traceMode);
 	}
+	public void setCurrentMode(AbstractMode m){
+		_currentMode = m;
+	}
 	public AbstractMode getNorMode(){
 		return _normalMode;
 	}
-	public AbstractMode getRecMode(){
-		return _recordMode;
+	public AbstractMode getInsMode(){
+		return _interestedMode;
 	}
 	public List<AbstractMode> getModeList(){
 		assert(_modeList != null);
 		return _modeList;
+	}
+	public String switchMode(){
+		if(_currentMode == null){
+			BreakpointManager.getInstance().removeAllBreakpoint();
+			BreakpointManager.getInstance().setAllBreakpoint();
+			this.setNorMode(new NormalMode());
+			return "First Start";
+		}
+		else{
+			return _currentMode.switchMode();
+		}
 	}
 
 	public int getModeType() {
@@ -162,6 +179,12 @@ public class EventCenter {
 	}
 	public void reset(){
 		instance = new EventCenter();
+	}
+	public boolean getAna() {
+		return _isAna;
+	}
+	public void setAna(boolean _isAna) {
+		this._isAna = _isAna;
 	}
 
 }

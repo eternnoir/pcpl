@@ -27,6 +27,8 @@ import org.eclipse.debug.core.model.IDebugTarget;
 import org.eclipse.debug.core.model.ILineBreakpoint;
 import org.eclipse.debug.core.model.IStackFrame;
 import org.eclipse.debug.core.model.IVariable;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.handlers.HandlerUtil;
 
 import eplic.core.breakpoint.BreakpointManager;
 import eplic.core.breakpoint.breakpointRecoder;
@@ -88,12 +90,26 @@ public class InterestedMode extends AbstractMode {
 		}
 		BreakpointManager.getInstance().diffResult(nm.getBreakPointRecorder().getBPS()
 				,this._bpr.getBPS());
+		EventCenter.getInstance().setAna(true);
 	}
 
 	@Override
 	public void init() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public String switchMode() {
+		if(EventCenter.getInstance().getAna()){
+			TraceMode tm = new TraceMode();
+			EventCenter.getInstance().setTraMode(tm);
+			return "Trace Mode";
+		}
+		AbstractMode nm = EventCenter.getInstance().getNorMode();
+		assert(nm != null);
+		EventCenter.getInstance().setCurrentMode(nm);
+		return "Normal Mode";
 	}
 	
 	
