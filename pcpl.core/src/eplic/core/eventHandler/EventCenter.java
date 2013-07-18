@@ -157,12 +157,13 @@ public class EventCenter {
 		assert(_modeList != null);
 		return _modeList;
 	}
-	public void switchMode(){
+	public String switchMode(){
 		if(_currentMode == null){
 			this.setNorMode(new NormalMode());
+			return "Normal Mode";
 		}
 		else{
-			_currentMode.switchMode();
+			return _currentMode.switchMode();
 		}
 	}
 

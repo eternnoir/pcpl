@@ -93,7 +93,12 @@ public class SampleHandler extends AbstractHandler {
 			System.err.print("mode error");
 		}
 		*/
-		EventCenter.getInstance().switchMode();
+		String res = EventCenter.getInstance().switchMode();
+		IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
+		MessageDialog.openInformation(
+				window.getShell(),
+				"Core",
+				"Mode Switch to "+ res);
 
 		return null;
 	}
