@@ -70,6 +70,8 @@ public class NormalMode extends AbstractMode {
 			return;
 		}
 		BreakpointManager.getInstance().diffResult(this._bpr.getBPS(),im.getBreakPointRecorder().getBPS());
+		TraceMode tm = new TraceMode();
+		EventCenter.getInstance().setTraMode(tm);
 
 	}
 	
@@ -99,14 +101,15 @@ public class NormalMode extends AbstractMode {
 		
 	}
 	@Override
-	public void switchMode() {
-		if(EventCenter.getInstance().getInsMode()==null){
+	public String switchMode() {
+		AbstractMode im = EventCenter.getInstance().getInsMode();
+		if(im==null){
 			EventCenter.getInstance().setIntMode(new InterestedMode());
 		}
 		else{
-			
+			EventCenter.getInstance().setCurrentMode(im);
 		}
-		
+		return "Interested Mode";
 	}
 	
 }

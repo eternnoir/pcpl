@@ -66,8 +66,10 @@ public class TraceMode extends AbstractMode implements BreakPointListener,
 	}
 
 	@Override
-	public void switchMode() {
-		// TODO Auto-generated method stub
+	public String switchMode() {
+		EventCenter.getInstance().reset();
+		BreakpointManager.getInstance().reset();
+		return "RESET";
 		
 	}
 	

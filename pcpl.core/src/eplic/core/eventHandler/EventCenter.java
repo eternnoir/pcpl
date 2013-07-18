@@ -144,6 +144,9 @@ public class EventCenter {
 		this.addBreakPointListener(_traceMode);
 		this.addTargetTerminationListener(_traceMode);
 	}
+	public void setCurrentMode(AbstractMode m){
+		_currentMode = m;
+	}
 	public AbstractMode getNorMode(){
 		return _normalMode;
 	}
