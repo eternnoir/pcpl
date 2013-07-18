@@ -24,6 +24,7 @@ import java.util.List;
 
 import org.eclipse.debug.core.DebugPlugin;
 
+import eplic.core.breakpoint.BreakpointManager;
 import eplic.core.mode.AbstractMode;
 import eplic.core.mode.NormalMode;
 import eplic.core.visualization.VisualizerManager;
@@ -159,8 +160,10 @@ public class EventCenter {
 	}
 	public String switchMode(){
 		if(_currentMode == null){
+			BreakpointManager.getInstance().removeAllBreakpoint();
+			BreakpointManager.getInstance().setAllBreakpoint();
 			this.setNorMode(new NormalMode());
-			return "Normal Mode";
+			return "First Start";
 		}
 		else{
 			return _currentMode.switchMode();
