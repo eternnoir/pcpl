@@ -44,6 +44,7 @@ public class EventCenter {
 	private AbstractMode  _normalMode;
 	private AbstractMode  _interestedMode;
 	private AbstractMode  _traceMode;
+	private boolean _isAna;
 	private List<AbstractMode> _modeList;
 	
 	public static EventCenter getInstance() {
@@ -178,6 +179,12 @@ public class EventCenter {
 	}
 	public void reset(){
 		instance = new EventCenter();
+	}
+	public boolean getAna() {
+		return _isAna;
+	}
+	public void setAna(boolean _isAna) {
+		this._isAna = _isAna;
 	}
 
 }
