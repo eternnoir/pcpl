@@ -124,12 +124,20 @@ public class EventCenter {
 	public void removeAllTargetTerminationListener() {
 		handler.removeAllTargetTerminationListener();
 	}
-	
+	/**
+	 * Set normal mode into event center
+	 * @param m
+	 */
 	public void setNorMode(AbstractMode m){
 		_normalMode = m;
 		this.addBreakPointListener(_normalMode);
 		_currentMode = _normalMode;
 	}
+	/**
+	 * set interested mode into event center.
+	 * it will remove normal mode's breakpoint listener.
+	 * @param m
+	 */
 	public void setIntMode(AbstractMode m){
 		_interestedMode = m;
 		this.removeAllBreakPointListener();
@@ -137,6 +145,11 @@ public class EventCenter {
 		this.addTargetTerminationListener(_interestedMode);
 		_currentMode = _interestedMode;
 	}
+	/**
+	 * set trace mode into event center
+	 * it will remove other breakpoint & termination listener.
+	 * @param m
+	 */
 	public void setTraMode(AbstractMode m){
 		_traceMode = m;
 		this.removeAllBreakPointListener();
@@ -146,6 +159,10 @@ public class EventCenter {
 		this.addBreakPointListener(_traceMode);
 		this.addTargetTerminationListener(_traceMode);
 	}
+	/**
+	 * get current mode
+	 * @param m
+	 */
 	public void setCurrentMode(AbstractMode m){
 		_currentMode = m;
 	}
@@ -159,6 +176,10 @@ public class EventCenter {
 		assert(_modeList != null);
 		return _modeList;
 	}
+	/**
+	 * Switch mode
+	 * @return
+	 */
 	public String switchMode(){
 		if(_currentMode == null){
 			BreakpointManager.getInstance().removeAllBreakpoint();
@@ -170,7 +191,10 @@ public class EventCenter {
 			return _currentMode.switchMode();
 		}
 	}
-
+	/**
+	 * get mode id
+	 * @return
+	 */
 	public int getModeType() {
 		if(_currentMode == null)
 			return 0;
