@@ -128,7 +128,7 @@ public class EventCenter {
 		this.addBreakPointListener(_normalMode);
 		_currentMode = _normalMode;
 	}
-	public void setRecMode(AbstractMode m){
+	public void setIntMode(AbstractMode m){
 		_interestedMode = m;
 		this.removeAllBreakPointListener();
 		this.addBreakPointListener(_interestedMode);

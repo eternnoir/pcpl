@@ -101,7 +101,7 @@ public class NormalMode extends AbstractMode {
 	@Override
 	public void switchMode() {
 		if(EventCenter.getInstance().getInsMode()==null){
-			
+			EventCenter.getInstance().setIntMode(new InterestedMode());
 		}
 		else{
 			
