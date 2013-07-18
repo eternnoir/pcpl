@@ -69,7 +69,7 @@ public class NormalMode extends AbstractMode {
 			System.err.print("Can't get instertedMode");
 			return;
 		}
-		BreakpointManager.getInstance().diffResult(im.getBreakPointRecorder().getBPS(),this._bpr.getBPS());
+		BreakpointManager.getInstance().diffResult(this._bpr.getBPS(),im.getBreakPointRecorder().getBPS());
 
 	}
 	
