@@ -78,7 +78,7 @@ public class NormalMode extends AbstractMode {
 		return _bpr;
 	}
 	/**
-	 * cont deubgger
+	 * cont debugger
 	 */
 	public void cont(){
 		for(IDebugTarget debugTarget : _debugTargets){
