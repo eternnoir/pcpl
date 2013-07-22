@@ -128,6 +128,7 @@ public class BasicView extends ViewPart implements IVisualizer{
 	private void clearGraph(){
 		g.removeAllVertices(_graphObjectList);
 		graph.removeAll();
+		graph.addGraphSelectionListener(new clickListener());
 		_graphObjectList = new ArrayList<Object>();
 	}
 	/**
