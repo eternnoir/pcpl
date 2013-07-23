@@ -43,6 +43,9 @@ public class BasicEventHandler extends AbstractEventHandler {
 	public BasicEventHandler(){
 
 	}
+	/**
+	 * See Eclipse debug event
+	 */
 	@Override
 	protected boolean handleBreakpointEvent(IDebugElement dElement) {
 		boolean ok = false;
