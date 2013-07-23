@@ -26,7 +26,7 @@ copy eplic.core_xxx.jar & eplic.simpleVisualizer_xxxx.jar to Eclipse/plugins
 [Link](https://docs.google.com/file/d/0B_YFSLic6FjBaDd4T0h3RzJDMGM/edit?usp=sharing)
 
 ###Tutorial
-[EPLIC Picking Tutorial](wiki/EPLIC-Picking-Tutorial)
+[EPLIC Picking Tutorial](https://github.com/ncuoolab/EPLIC/wiki/EPLIC-Picking-Tutorial)
 
 ##License:
 LGPL 3 or later
