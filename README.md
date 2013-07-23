@@ -15,8 +15,8 @@ copy eplic.core_xxx.jar & eplic.simpleVisualizer_xxxx.jar to Eclipse/plugins
 1. Download EPLIC source code 
 > https://github.com/eternnoir/EPLIC
 
-1.Open Eclipse for RCP and RAP Developers
-1.Import core & simpleVisualizer(if you want)
+1. Open Eclipse for RCP and RAP Developers
+1. Import core & simpleVisualizer(if you want)
 
 ##Main Site
 [http://oolab.csie.ncu.edu.tw/wiki/index.php/EPLIC](http://oolab.csie.ncu.edu.tw/wiki/index.php/EPLIC)
