@@ -23,5 +23,7 @@ copy eplic.core_xxx.jar & eplic.simpleVisualizer_xxxx.jar to Eclipse/plugins
 
 ##Demo
 
+[https://docs.google.com/file/d/0B_YFSLic6FjBaDd4T0h3RzJDMGM/edit?usp=sharing](Link)
+
 ##License:
 LGPL 3 or later
