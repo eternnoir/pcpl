@@ -33,6 +33,12 @@ import eplic.core.visualization.VisualizerManager;
  * EventCenter定義了所有EPLIC會用到的Event
  * 擁有一個BasicEventHandler
  * 
+ * 在EPLIC的所有Event都會透過這個Class,同時也提供Listener的註冊
+ * 或是解除註冊
+ * 
+ * 最主要的三個Event為Breakpoint被hint到時的event
+ * target被建立時,以及target結束時
+ * 
  * @see BasicEventHandler
  * @author FrankWang
  *
