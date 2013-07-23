@@ -18,6 +18,10 @@ copy eplic.core_xxx.jar & eplic.simpleVisualizer_xxxx.jar to Eclipse/plugins
 1. Open Eclipse for RCP and RAP Developers
 1. Import core & simpleVisualizer(if you want)
 
+###Libs
+* JGrapht
+> [http://jgrapht.org/](http://jgrapht.org/)
+
 ##Main Site
 [http://oolab.csie.ncu.edu.tw/wiki/index.php/EPLIC](http://oolab.csie.ncu.edu.tw/wiki/index.php/EPLIC)
 
