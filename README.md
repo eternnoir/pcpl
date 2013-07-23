@@ -21,6 +21,7 @@ copy eplic.core_xxx.jar & eplic.simpleVisualizer_xxxx.jar to Eclipse/plugins
 
 ###Libs
 * JGrapht: [http://jgrapht.org/](http://jgrapht.org/)
+* simpleVisualizer使用
 
 ##Demo
 
