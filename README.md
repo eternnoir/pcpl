@@ -3,6 +3,8 @@ Locating Interested Code by Program Execution Paths with Debugger.
 
 An Eclipse Plugin.
 
+<iframe src="https://docs.google.com/file/d/0B_YFSLic6FjBaDd4T0h3RzJDMGM/preview" width="640" height="385"></iframe>
+
 ##Installation
 Download the lasted release from:
 https://github.com/eternnoir/EPLIC/releases
